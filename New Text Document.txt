@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Generation Ltd — AI Web, Design & Media</title>
+  <meta name="description" content="Website Generation Ltd. AI-driven websites, branding, video & animation, vinyl printing, and automation/chatbots." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Floating gradient background -->
+  <div class="bg-gradients" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand">
+        <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg" alt="" class="brand-mark" />
+        <span>Website Generation<span class="suffix">.co.uk</span></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link btn btn-sm btn-outline">Contact</a>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="scrollbar" id="scrollbar"></div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="section hero">
+    <div class="container hero-inner">
+      <h1 class="reveal-up">
+        Website Generation Ltd
+      </h1>
+      <p class="lead reveal-up delay-1">
+        AI-driven websites, branding, video & animation, vinyl printing, and automation chatbots.
+      </p>
+      <div class="cta-group reveal-up delay-2">
+        <a href="#services" class="btn btn-lg">View Services</a>
+        <a href="#contact" class="btn btn-lg btn-outline">Contact Us</a>
+      </div>
+
+      <div class="hero-media reveal-up delay-3">
+        <div class="media-card">
+          <img
+            src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1600&auto=format&fit=crop"
+            alt="AI and web technology preview" loading="lazy">
+        </div>
+        <div class="media-card tilt">
+          <img
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop"
+            alt="Modern web design workspace" loading="lazy">
+        </div>
+      </div>
+
+      <ul class="trust-badges reveal-up delay-4">
+        <li><span class="dot"></span> UK Registered • SC868009</li>
+        <li><span class="dot"></span> Glasgow & Neath</li>
+        <li><span class="dot"></span> Fast turnaround</li>
+      </ul>
+    </div>
+    <a href="#services" class="scroll-cue" aria-label="Scroll to services">▼</a>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title reveal-up">Services</h2>
+      <p class="section-subtitle reveal-up delay-1">Real deliverables. Online and physical.</p>
+
+      <div class="cards">
+        <!-- AI Website Generator -->
+        <article class="card reveal-up">
+          <div class="icon-wrap">
+            <!-- globe icon -->
+            <svg viewBox="0 0 24 24" class="icon"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 0c2.5 2.5 4 6.1 4 10s-1.5 7.5-4 10M12 2c-2.5 2.5-4 6.1-4 10s1.5 7.5 4 10M2 12h20M4 7h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>AI Website Generator</h3>
+          <p>Instant multi-page sites, mobile-first, SEO-ready. Full hosting + domain purchase flow.</p>
+          <ul class="bullets">
+            <li>Custom pages in minutes</li>
+            <li>Stripe checkout ready</li>
+            <li>GitHub/Netlify deploy</li>
+          </ul>
+        </article>
+
+        <!-- Web Design & Branding -->
+        <article class="card reveal-up delay-1">
+          <div class="icon-wrap">
+            <!-- layout icon -->
+            <svg viewBox="0 0 24 24" class="icon"><rect x="3" y="4" width="18" height="6" rx="1.5" stroke="currentColor" fill="none"/><rect x="3" y="12" width="10" height="8" rx="1.5" stroke="currentColor" fill="none"/><rect x="15" y="12" width="6" height="8" rx="1.5" stroke="currentColor" fill="none"/></svg>
+          </div>
+          <h3>Web Design & Branding</h3>
+          <p>Bespoke brand systems. Logos, palettes, type, and full UI kits.</p>
+          <ul class="bullets">
+            <li>Design systems</li>
+            <li>Brand guidelines</li>
+            <li>Asset packs</li>
+          </ul>
+        </article>
+
+        <!-- AI Video & Animation -->
+        <article class="card reveal-up delay-2">
+          <div class="icon-wrap">
+            <!-- video icon -->
+            <svg viewBox="0 0 24 24" class="icon"><rect x="3" y="5" width="14" height="14" rx="2" stroke="currentColor" fill="none"/><path d="M17 9l4-2v10l-4-2z" fill="currentColor"/></svg>
+          </div>
+          <h3>AI Video & Animation</h3>
+          <p>Product promos, reels, and realistic AI character video content.</p>
+          <ul class="bullets">
+            <li>Storyboards to final cut</li>
+            <li>Motion graphics</li>
+            <li>Sound design</li>
+          </ul>
+        </article>
+
+        <!-- Vinyl Printing & Signage -->
+        <article class="card reveal-up delay-3">
+          <div class="icon-wrap">
+            <!-- printer icon -->
+            <svg viewBox="0 0 24 24" class="icon"><path d="M6 9V4h12v5" stroke="currentColor" fill="none"/><rect x="3" y="9" width="18" height="8" rx="2" stroke="currentColor" fill="none"/><rect x="7" y="15" width="10" height="5" rx="1" stroke="currentColor" fill="none"/></svg>
+          </div>
+          <h3>Vinyl Printing & Signage</h3>
+          <p>Shopfronts, vehicles, events. Design, print, and install.</p>
+          <ul class="bullets">
+            <li>Boards, panels, windows</li>
+            <li>Vehicle graphics</li>
+            <li>On-site fitting</li>
+          </ul>
+        </article>
+
+        <!-- Music & Entertainment Websites -->
+        <article class="card reveal-up delay-4">
+          <div class="icon-wrap">
+            <!-- music icon -->
+            <svg viewBox="0 0 24 24" class="icon"><path d="M9 18a3 3 0 1 1-2-2.83V6l10-2v9.17A3 3 0 1 1 15 16V7.5L9 9v9z" fill="currentColor"/></svg>
+          </div>
+          <h3>Music & Entertainment Sites</h3>
+          <p>Band and promoter pages. EPKs, events, streaming embeds.</p>
+          <ul class="bullets">
+            <li>Gig calendars</li>
+            <li>Media galleries</li>
+            <li>Mailing lists</li>
+          </ul>
+        </article>
+
+        <!-- Automation & Chatbots -->
+        <article class="card reveal-up delay-5">
+          <div class="icon-wrap">
+            <!-- bot icon -->
+            <svg viewBox="0 0 24 24" class="icon"><rect x="5" y="7" width="14" height="10" rx="3" stroke="currentColor" fill="none"/><circle cx="9" cy="12" r="1.5" fill="currentColor"/><circle cx="15" cy="12" r="1.5" fill="currentColor"/><path d="M12 4v3" stroke="currentColor"/></svg>
+          </div>
+          <h3>Automation & Chatbots</h3>
+          <p>Instagram and WhatsApp auto-reply funnels using Meta APIs.</p>
+          <ul class="bullets">
+            <li>24/7 responses</li>
+            <li>Lead capture</li>
+            <li>Analytics</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section section-alt">
+    <div class="container about-grid">
+      <div class="about-media reveal-up">
+        <img
+          src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop"
+          alt="Studio workspace">
+      </div>
+      <div class="about-copy">
+        <h2 class="reveal-up">About</h2>
+        <p class="reveal-up delay-1">
+          Website Generation Ltd is a UK-registered digital studio combining AI automation, design, and physical print.
+          Based in Glasgow and Neath, led by Joe Mort. From instant AI-generated websites to high-impact signage and
+          AI video content, we deliver clear outcomes fast.
+        </p>
+        <ul class="about-list reveal-up delay-2">
+          <li>Company No: SC868009</li>
+          <li>Registered Office: 272 Bath Street, Glasgow G2 4JR</li>
+          <li>Email: <a href="mailto:joe@websitegeneration.co.uk">joe@websitegeneration.co.uk</a></li>
+        </ul>
+        <div class="about-actions reveal-up delay-3">
+          <a href="#contact" class="btn btn-lg">Start a project</a>
+          <a href="#services" class="btn btn-lg btn-outline">See services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title reveal-up">Contact</h2>
+      <p class="section-subtitle reveal-up delay-1">Tell us what you need. Quick reply.</p>
+
+      <div class="contact-grid">
+        <form id="contactForm" class="contact-form reveal-up" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@email.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Project details…" required></textarea>
+          </div>
+          <button class="btn btn-lg" type="submit" id="submitBtn">
+            Send message
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+          <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+          <p class="tiny">Submits to Google Apps Script once you add your endpoint in <code>script.js</code>.</p>
+        </form>
+
+        <aside class="contact-aside reveal-up delay-2">
+          <div class="info">
+            <h3>Direct</h3>
+            <p><strong>Email:</strong> <a href="mailto:joe@websitegeneration.co.uk">joe@websitegeneration.co.uk</a></p>
+            <p><strong>Registered Office:</strong><br>272 Bath Street, Glasgow G2 4JR</p>
+            <p><strong>Company No:</strong> SC868009</p>
+          </div>
+          <div class="map">
+            <iframe
+              title="Glasgow Office"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=272%20Bath%20Street%2C%20Glasgow&output=embed"></iframe>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="glow-line" aria-hidden="true"></div>
+      <p>© <span id="year"></span> Website Generation Ltd • All rights reserved</p>
+      <p class="sub">
+        Powered by Website Generation AI • <a href="#home">Back to top</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+// Mobile nav
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+burger?.addEventListener('click', () => {
+  const expanded = burger.getAttribute('aria-expanded') === 'true';
+  burger.setAttribute('aria-expanded', String(!expanded));
+  nav.classList.toggle('open');
+});
+
+// Scroll progress
+const bar = document.getElementById('scrollbar');
+document.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = ((h.scrollTop) / (h.scrollHeight - h.clientHeight)) * 100;
+  bar.style.width = scrolled + '%';
+}, { passive: true });
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Contact form (Google Apps Script endpoint placeholder)
+const form = document.getElementById('contactForm');
+const statusEl = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+// 1) Create a Google Apps Script web app:
+//    - New script → paste email handler → Deploy → Web app → Anyone
+// 2) Put the deployed URL here:
+const APPS_SCRIPT_URL = ''; // TODO: paste your GAS URL
+
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!APPS_SCRIPT_URL) {
+    statusEl.textContent = 'Form endpoint not configured yet. Add your Google Apps Script URL in script.js.';
+    return;
+  }
+
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  statusEl.textContent = 'Sending…';
+
+  try {
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', // GAS often needs no-cors; adjust if you proxy
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: 'joe@websitegeneration.co.uk',
+        subject: 'New website enquiry',
+        payload: data
+      })
+    });
+
+    // With no-cors you can’t read status; show optimistic success.
+    form.reset();
+    statusEl.textContent = 'Thanks. Message sent.';
+  } catch (err) {
+    console.error(err);
+    statusEl.textContent = 'Error sending. Try again or email joe@websitegeneration.co.uk.';
+  } finally {
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+  }
+});
