@@ -1,3 +1,8 @@
+// ==========================================================
+// WEBSITE GENERATION LTD — OPTIMIZED MAIN SCRIPT (v8.7)
+// Adds: Scroll-to-top on reload + Spline support + YouTube click-to-play
+// ==========================================================
+
 // =========================
 // DOM ELEMENTS
 // =========================
@@ -8,105 +13,176 @@ const scrollbar = document.getElementById("scrollbar");
 const yearSpan = document.getElementById("year");
 
 // =========================
-// SCROLLBAR + SHRINK HEADER
+// FORCE START AT TOP ON PAGE LOAD
 // =========================
-window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
-  const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - window.innerHeight;
-  const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  if (scrollbar) scrollbar.style.width = scrolled + "%";
-
-  if (scrollTop > 60) header && header.classList.add("shrink");
-  else header && header.classList.remove("shrink");
-}, { passive: true });
+window.history.scrollRestoration = "manual";
+window.scrollTo(0, 0);
+window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
 
 // =========================
-// BURGER MENU TOGGLE
+// SCROLLBAR + SHRINK HEADER (rAF-throttled)
+// =========================
+let ticking = false;
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (scrollbar) {
+          const h = document.body.scrollHeight - window.innerHeight;
+          scrollbar.style.width = h > 0 ? (y / h) * 100 + "%" : "0";
+        }
+        if (header) header.classList.toggle("shrink", y > 50);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  },
+  { passive: true }
+);
+
+// =========================
+// BURGER MENU TOGGLE (Accessible + Body Lock)
 // =========================
 if (burger && nav) {
-  burger.addEventListener("click", () => {
-    const expanded = burger.getAttribute("aria-expanded") === "true";
-    burger.setAttribute("aria-expanded", String(!expanded));
-    nav.classList.toggle("open");
+  const toggleMenu = () => {
+    const isOpen = burger.getAttribute("aria-expanded") === "true";
+    const newState = !isOpen;
+    burger.setAttribute("aria-expanded", String(newState));
+    nav.classList.toggle("open", newState);
+    document.body.style.overflow = newState ? "hidden" : "";
+  };
+
+  burger.addEventListener("click", toggleMenu);
+
+  // Close on link click
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest("a")) {
+      burger.setAttribute("aria-expanded", "false");
+      nav.classList.remove("open");
+      document.body.style.overflow = "";
+    }
   });
 
-  // Close nav on link click (mobile)
-  nav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-      burger.setAttribute("aria-expanded", "false");
-    });
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("open")) toggleMenu();
   });
 }
 
 // =========================
-// SMOOTH SCROLL BEHAVIOUR
+// SMOOTH SCROLL (single listener)
 // =========================
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener("click", e => {
-    const targetId = link.getAttribute("href");
-    if (!targetId || targetId === "#") return;
-    const target = document.querySelector(targetId);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
+document.addEventListener("click", (e) => {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const href = link.getAttribute("href");
+  const target = href && href.length > 1 ? document.querySelector(href) : null;
+  if (!target) return;
+  e.preventDefault();
+  const y = target.getBoundingClientRect().top + window.scrollY - 72;
+  window.scrollTo({ top: y, behavior: "smooth" });
+  history.replaceState(null, "", href);
 });
 
 // =========================
-// REVEAL ON SCROLL
+// REVEAL ON SCROLL (single IntersectionObserver)
 // =========================
-const revealEls = document.querySelectorAll(".reveal-up");
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+window.addEventListener("load", () => {
+  // ensure always top on reload
+  window.scrollTo(0, 0);
+
+  const revealEls = document.querySelectorAll(".reveal-up");
+  if (revealEls.length) {
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            obs.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.1 }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  }
+
+  // =========================
+  // YEAR AUTO UPDATE
+  // =========================
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+  // =========================
+  // CONTACT FORM HANDLER
+  // =========================
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    const formStatus = document.getElementById("formStatus");
+    const submitBtn = document.getElementById("submitBtn");
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (formStatus) formStatus.textContent = "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+      }
+
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyO0DP9Ld8FPbw29bK3osFLU_YxvRVeo1WGp9Iz2bCzpxHaaFuhBGqnDgpa-zFJ1ze6/exec";
+
+      try {
+        const response = await fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(contactForm),
+        });
+
+        if (response.ok) {
+          if (formStatus) {
+            formStatus.textContent = "Message sent successfully!";
+            formStatus.style.color = "#00ff9d";
+          }
+          contactForm.reset();
+          window.scrollTo({ top: 0, behavior: "smooth" }); // scroll to top after send
+        } else {
+          throw new Error("Server error");
+        }
+      } catch (err) {
+        if (formStatus) {
+          formStatus.textContent =
+            err.message === "Failed to fetch"
+              ? "Network error. Please try again."
+              : "Failed to send message. Please try again.";
+          formStatus.style.color = "#ff6b6b";
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Send Message";
+        }
+        setTimeout(() => {
+          if (formStatus) formStatus.textContent = "";
+        }, 5000);
       }
     });
-  },
-  { threshold: 0.15, rootMargin: "0px 0px -5% 0px" }
-);
-revealEls.forEach(el => observer.observe(el));
+  }
 
-// =========================
-// YEAR AUTO UPDATE
-// =========================
-if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-// =========================
-/* CONTACT FORM HANDLER
-   Replace scriptURL with your Google Apps Script endpoint.
-   Keeps UI responsive and shows status messages.
-*/
-// =========================
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-  const formStatus = document.getElementById("formStatus");
-  const submitBtn = document.getElementById("submitBtn");
-  contactForm.addEventListener("submit", async e => {
-    e.preventDefault();
-    if (formStatus) formStatus.textContent = "Sending...";
-    if (submitBtn) submitBtn.disabled = true;
-
-    const scriptURL = ""; // TODO: paste your Apps Script URL
-    try {
-      const res = await fetch(scriptURL || "/__no_endpoint__", {
-        method: "POST",
-        body: new FormData(contactForm),
+  // =========================
+  // VIDEO THUMB CLICK-TO-PLAY
+  // =========================
+  const thumbs = document.querySelectorAll(".video-thumb");
+  if (thumbs.length) {
+    thumbs.forEach((v) => {
+      v.addEventListener("click", () => {
+        const id = v.dataset.yt;
+        const iframe = v.querySelector("iframe");
+        iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+        iframe.style.display = "block";
+        v.querySelector("img").style.display = "none";
+        v.style.pointerEvents = "none";
       });
-      if (res.ok) {
-        if (formStatus) formStatus.textContent = "Message sent.";
-        contactForm.reset();
-      } else {
-        if (formStatus) formStatus.textContent = "Error submitting form.";
-      }
-    } catch {
-      if (formStatus) formStatus.textContent = "Network error.";
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
-    }
-  });
-}
+    });
+  }
+});
