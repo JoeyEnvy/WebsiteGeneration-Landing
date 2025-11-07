@@ -228,42 +228,63 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 // GOOGLE APPS SCRIPT CONTACT FORM (doPost function)
 // =========================
 /* 
-   Below is the Google Apps Script for handling contact form submissions.
-   You can modify the recipient email, subject, and message body as needed.
-*/
-function doPost(e) {
-  try {
-    const data = e.parameter;
-    const name = data.name || "No name";
-    const email = data.email || "No email";
-    const message = data.message || "No message";
+ document.addEventListener("DOMContentLoaded", function() {
+  const contactForm = document.getElementById("contactForm");
+  const formStatus = document.getElementById("formStatus");
+  const submitBtn = document.getElementById("submitBtn");
+  const loader = document.getElementById("loader");
 
-    const subject = `New Contact Form Message — ${name}`;
-    const body = `
-New message from WebsiteGeneration.co.uk
+  // Handle form submission
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();  // Prevent page reset or reload when form is submitted
 
-Name: ${name}
-Email: ${email}
+    // Show loader and disable submit button
+    loader.style.display = "inline-block";
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
 
-Message:
-${message}
-`;
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyO0DP9Ld8FPbw29bK3osFLU_YxvRVeo1WGp9Iz2bCzpxHaaFuhBGqnDgpa-zFJ1ze6/exec";
 
-    // Send email to the specified address
-    MailApp.sendEmail({
-      to: "joe@websitegeneration.co.uk",   // your inbox
-      subject: subject,
-      body: body
-    });
+    try {
+      // Send form data to Google Apps Script using fetch
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(contactForm), // Send form data
+      });
 
-    // Return success response
-    return ContentService
-      .createTextOutput("OK")
-      .setMimeType(ContentService.MimeType.TEXT);
-  } catch (err) {
-    // Return error message if something goes wrong
-    return ContentService
-      .createTextOutput("ERROR: " + err)
-      .setMimeType(ContentService.MimeType.TEXT);
-  }
-}
+      if (response.ok) {
+        // Success: Show thank-you message
+        formStatus.textContent = "Thank you for your message! We will get back to you shortly.";
+        formStatus.style.color = "#00ff9d";  // Green success color
+
+        // Hide the form after successful submission
+        contactForm.style.display = "none";
+
+        // Optionally clear the form fields
+        contactForm.reset();
+
+        // Optionally, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        throw new Error("Server error");
+      }
+    } catch (err) {
+      // Error: Show error message
+      formStatus.textContent = err.message === "Failed to fetch"
+        ? "Network error. Please try again."
+        : "Failed to send message. Please try again.";
+      formStatus.style.color = "#ff6b6b";  // Red error color
+    } finally {
+      // Hide loader and enable the submit button again
+      loader.style.display = "none";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Message";
+
+      // Clear the status message after a few seconds
+      setTimeout(() => {
+        formStatus.textContent = "";
+      }, 5000);
+    }
+  });
+});
+
