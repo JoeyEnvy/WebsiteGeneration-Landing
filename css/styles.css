@@ -978,4 +978,144 @@ window.addEventListener('load', () => {
   }
 }
 
+/* ======================================================================
+   21. ULTRA-FINE MOBILE TUNING — HAMBURGER + BRAND (NO TEXT <470px)
+   ====================================================================== */
+@media (max-width: 470px) {
+  /* HIDE TEXT: "Website Generation.co.uk" */
+  .brand span,
+  .brand .suffix {
+    display: none !important;
+  }
 
+  /* INCREASE LEFT MARGIN ON BRAND IMAGE */
+  .brand {
+    gap: 0 !important;
+    margin: 0 12px !important;
+    justify-content: flex-start !important;
+  }
+  .brand-mark {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    height: 62px !important;
+  }
+  .site-header.shrink .brand-mark {
+    height: 46px !important;
+  }
+
+  /* HAMBURGER — EXTRA RIGHT MARGIN */
+  .burger {
+    margin-right: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .burger {
+    margin-right: 32px;
+  }
+  .brand-mark {
+    height: 58px !important;
+  }
+  .site-header.shrink .brand-mark {
+    height: 44px !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .burger {
+    margin-right: 36px;
+    width: 44px;
+    height: 44px;
+  }
+  .burger span {
+    left: 10px; right: 10px;
+  }
+  .burger span:nth-child(1) { top: 13px; }
+  .burger span:nth-child(2) { top: 20px; }
+  .burger span:nth-child(3) { top: 27px; }
+
+  .brand-mark {
+    height: 54px !important;
+  }
+  .site-header.shrink .brand-mark {
+    height: 42px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .burger {
+    margin-right: 40px;
+    width: 42px;
+    height: 42px;
+  }
+  .burger span {
+    left: 9px; right: 9px;
+  }
+  .burger span:nth-child(1) { top: 12px; }
+  .burger span:nth-child(2) { top: 19px; }
+  .burger span:nth-child(3) { top: 26px; }
+
+  .brand-mark {
+    height: 50px !important;
+  }
+  .site-header.shrink .brand-mark {
+    height: 40px !important;
+  }
+}
+
+
+/* ======================================================================
+   23. VINYL GRID — OPTIMIZED HOVER (NO LAG)
+   ====================================================================== */
+.vinyl-item {
+  display: block;
+  position: relative;
+  background: var(--surface-2);
+  border: 1.5px solid var(--outline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform .32s ease, border-color .32s ease, box-shadow .32s ease;
+  cursor: zoom-in;
+}
+.vinyl-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--brand-accent);
+  box-shadow: 0 12px 24px rgba(0,0,0,.2);
+}
+.vinyl-item picture,
+.vinyl-item img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.vinyl-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(10,11,30,.9));
+  color: #fff;
+  padding: 24px 16px 16px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all .32s ease;
+}
+.vinyl-item:hover .vinyl-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+.vinyl-caption h4 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: var(--brand-accent);
+}
+.vinyl-caption p {
+  margin: 0;
+  font-size: .9rem;
+  color: #e0f0ff;
+}
+
+@media (max-width: 768px) {
+  .vinyl-grid { grid-template-columns: 1fr; }
+  .vinyl-item picture,
+  .vinyl-item img { height: 200px; }
+}

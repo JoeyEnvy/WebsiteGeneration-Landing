@@ -15,32 +15,30 @@ const yearSpan = document.getElementById("year");
 // =========================
 // FORCE START AT TOP ON PAGE LOAD
 // =========================
-window.history.scrollRestoration = "manual";
-window.scrollTo(0, 0);
-window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
+window.history.scrollRestoration = "manual";  // Prevent browser's automatic scroll restoration
+window.scrollTo(0, 0);  // Always start from the top on page load
+window.addEventListener("beforeunload", () => window.scrollTo(0, 0));  // Reset scroll position on page unload
 
 // =========================
 // SCROLLBAR + SHRINK HEADER (rAF-throttled)
 // =========================
 let ticking = false;
-window.addEventListener(
-  "scroll",
-  () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if (scrollbar) {
-          const h = document.body.scrollHeight - window.innerHeight;
-          scrollbar.style.width = h > 0 ? (y / h) * 100 + "%" : "0";
-        }
-        if (header) header.classList.toggle("shrink", y > 50);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  },
-  { passive: true }
-);
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      if (scrollbar) {
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        scrollbar.style.width = totalHeight > 0 ? (scrollY / totalHeight) * 100 + "%" : "0";
+      }
+      if (header) {
+        header.classList.toggle("shrink", scrollY > 50);
+      }
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
 
 // =========================
 // BURGER MENU TOGGLE (Accessible + Body Lock)
@@ -51,12 +49,12 @@ if (burger && nav) {
     const newState = !isOpen;
     burger.setAttribute("aria-expanded", String(newState));
     nav.classList.toggle("open", newState);
-    document.body.style.overflow = newState ? "hidden" : "";
+    document.body.style.overflow = newState ? "hidden" : "";  // Lock body scrolling when menu is open
   };
 
   burger.addEventListener("click", toggleMenu);
 
-  // Close on link click
+  // Close menu on link click
   nav.addEventListener("click", (e) => {
     if (e.target.closest("a")) {
       burger.setAttribute("aria-expanded", "false");
@@ -65,9 +63,11 @@ if (burger && nav) {
     }
   });
 
-  // Close on ESC
+  // Close on ESC key press
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && nav.classList.contains("open")) toggleMenu();
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      toggleMenu();
+    }
   });
 }
 
@@ -77,42 +77,42 @@ if (burger && nav) {
 document.addEventListener("click", (e) => {
   const link = e.target.closest('a[href^="#"]');
   if (!link) return;
-  const href = link.getAttribute("href");
-  const target = href && href.length > 1 ? document.querySelector(href) : null;
+  const target = document.querySelector(link.getAttribute("href"));
   if (!target) return;
   e.preventDefault();
-  const y = target.getBoundingClientRect().top + window.scrollY - 72;
-  window.scrollTo({ top: y, behavior: "smooth" });
-  history.replaceState(null, "", href);
+  const offsetY = target.getBoundingClientRect().top + window.scrollY - 72;  // Adjust for fixed navbar
+  window.scrollTo({ top: offsetY, behavior: "smooth" });
+  history.replaceState(null, "", link.getAttribute("href"));
 });
 
 // =========================
 // REVEAL ON SCROLL (single IntersectionObserver)
 // =========================
 window.addEventListener("load", () => {
-  // ensure always top on reload
-  window.scrollTo(0, 0);
+  window.scrollTo(0, 0);  // Ensure top on reload
 
   const revealEls = document.querySelectorAll(".reveal-up");
   if (revealEls.length) {
     const io = new IntersectionObserver(
-      (entries, obs) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            obs.unobserve(e.target);
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
-        }
+        });
       },
       { threshold: 0.1 }
     );
-    revealEls.forEach((el) => io.observe(el));
+    revealEls.forEach(el => io.observe(el));
   }
 
   // =========================
   // YEAR AUTO UPDATE
   // =========================
-  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
 
   // =========================
   // CONTACT FORM HANDLER
@@ -121,17 +121,18 @@ window.addEventListener("load", () => {
   if (contactForm) {
     const formStatus = document.getElementById("formStatus");
     const submitBtn = document.getElementById("submitBtn");
+    const loader = document.getElementById("loader");
 
     contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+      e.preventDefault();  // Prevent page reload
       if (formStatus) formStatus.textContent = "";
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
       }
+      if (loader) loader.style.display = "inline-block"; // Show loader while submitting
 
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbyO0DP9Ld8FPbw29bK3osFLU_YxvRVeo1WGp9Iz2bCzpxHaaFuhBGqnDgpa-zFJ1ze6/exec";
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyO0DP9Ld8FPbw29bK3osFLU_YxvRVeo1WGp9Iz2bCzpxHaaFuhBGqnDgpa-zFJ1ze6/exec";
 
       try {
         const response = await fetch(scriptURL, {
@@ -142,28 +143,29 @@ window.addEventListener("load", () => {
         if (response.ok) {
           if (formStatus) {
             formStatus.textContent = "Message sent successfully!";
-            formStatus.style.color = "#00ff9d";
+            formStatus.style.color = "#00ff9d";  // Green for success
           }
           contactForm.reset();
-          window.scrollTo({ top: 0, behavior: "smooth" }); // scroll to top after send
+          window.scrollTo({ top: 0, behavior: "smooth" });  // Scroll to top after sending message
+          contactForm.style.display = "none";  // Optionally hide form after submission
         } else {
           throw new Error("Server error");
         }
       } catch (err) {
         if (formStatus) {
-          formStatus.textContent =
-            err.message === "Failed to fetch"
-              ? "Network error. Please try again."
-              : "Failed to send message. Please try again.";
-          formStatus.style.color = "#ff6b6b";
+          formStatus.textContent = err.message === "Failed to fetch"
+            ? "Network error. Please try again."
+            : "Failed to send message. Please try again.";
+          formStatus.style.color = "#ff6b6b";  // Red for error
         }
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = "Send Message";
         }
+        if (loader) loader.style.display = "none";  // Hide loader after submission
         setTimeout(() => {
-          if (formStatus) formStatus.textContent = "";
+          if (formStatus) formStatus.textContent = "";  // Clear status message after timeout
         }, 5000);
       }
     });
@@ -174,15 +176,44 @@ window.addEventListener("load", () => {
   // =========================
   const thumbs = document.querySelectorAll(".video-thumb");
   if (thumbs.length) {
-    thumbs.forEach((v) => {
-      v.addEventListener("click", () => {
-        const id = v.dataset.yt;
-        const iframe = v.querySelector("iframe");
-        iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
-        iframe.style.display = "block";
-        v.querySelector("img").style.display = "none";
-        v.style.pointerEvents = "none";
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        const iframe = thumb.querySelector("iframe");
+        if (iframe) return;  // Prevent multiple iframes
+        const id = thumb.dataset.yt;
+        const iframeElement = document.createElement("iframe");
+        iframeElement.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+        iframeElement.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframeElement.allowFullscreen = true;
+        thumb.appendChild(iframeElement);
+        thumb.querySelector("img").style.display = "none";  // Hide thumbnail image
+        thumb.style.pointerEvents = "none";  // Disable further clicks
       });
+    });
+  }
+});
+
+// =========================
+// PAGE TRANSITION LOGIC (Smooth Navigation)
+// =========================
+document.querySelectorAll('a[href$=".html"]').forEach(link => {
+  if (link.hostname === location.hostname) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+
+      // Create transition overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'page-transition';
+      document.body.appendChild(overlay);
+
+      // Trigger entrance animation
+      requestAnimationFrame(() => overlay.classList.add('active'));
+
+      // Navigate after animation
+      setTimeout(() => {
+        window.location = href;
+      }, 600);
     });
   }
 });

@@ -9,8 +9,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Devious AI Videos — Website Generation Ltd</title>
   <meta name="description" content="AI-generated motion, storyboards, and post-production by Website Generation Ltd.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Website Generation Ltd">
+  <meta name="keywords" content="AI-generated videos, animation, storyboards, post-production, digital media, motion graphics, Devious AI">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Devious AI Videos — Website Generation Ltd">
+  <meta property="og:description" content="AI-powered videos, animation, and post-production projects from Website Generation Ltd.">
+  <meta property="og:image" content="images/14.png">
+  <meta property="og:url" content="https://websitegeneration.co.uk/videos.html">
+  <meta property="og:type" content="website">
   <link rel="canonical" href="https://websitegeneration.co.uk/videos.html">
-  <link rel="icon" type="image/png" href="images/9.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/14.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/14.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -121,81 +131,72 @@
   <script>
     document.documentElement.classList.remove('no-js');
     document.getElementById('year').textContent = new Date().getFullYear();
-    (function(){
-      var header=document.getElementById('header');
-      var bar=document.getElementById('scrollbar');
-      function onScroll(){
-        if(header) header.classList.toggle('shrink',window.scrollY>60);
-        if(bar){
-          var max=document.body.scrollHeight-window.innerHeight;
-          bar.style.width=(max>0?(window.scrollY/max)*100:0)+'%';
+
+    (function() {
+      var header = document.getElementById('header');
+      var bar = document.getElementById('scrollbar');
+      function onScroll() {
+        if (header) header.classList.toggle('shrink', window.scrollY > 60);
+        if (bar) {
+          var max = document.body.scrollHeight - window.innerHeight;
+          bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
         }
       }
-      window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
     })();
-    (function(){
-      var burger=document.getElementById('burger');
-      var nav=document.getElementById('nav');
-      burger.addEventListener('click',function(){
-        var ex=burger.getAttribute('aria-expanded')==='true';
-        burger.setAttribute('aria-expanded',!ex);
+
+    (function() {
+      var burger = document.getElementById('burger');
+      var nav = document.getElementById('nav');
+      burger.addEventListener('click', function() {
+        var ex = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !ex);
         nav.classList.toggle('open');
       });
-      nav.addEventListener('click',function(e){
-        if(e.target.closest('a')){
-          burger.setAttribute('aria-expanded','false');
+      nav.addEventListener('click', function(e) {
+        if (e.target.closest('a')) {
+          burger.setAttribute('aria-expanded', 'false');
           nav.classList.remove('open');
         }
       });
     })();
+
     // Lightweight lazy video loader
-    document.querySelectorAll('.video-thumb').forEach(v=>{
-      v.addEventListener('click',()=>{
-        if(v.classList.contains('is-playing'))return;
-        const iframe=document.createElement('iframe');
-        iframe.src=v.dataset.src+'?autoplay=1';
-        iframe.allow='accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture';
-        iframe.allowFullscreen=true;
+    document.querySelectorAll('.video-thumb').forEach(v => {
+      v.addEventListener('click', () => {
+        if (v.classList.contains('is-playing')) return;
+        const iframe = document.createElement('iframe');
+        iframe.src = v.dataset.src + '?autoplay=1';
+        iframe.allow = 'accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture';
+        iframe.allowFullscreen = true;
         v.appendChild(iframe);
         v.classList.add('is-playing');
       });
     });
 
+    // === PAGE TRANSITION LOGIC ===
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      if (link.hostname === location.hostname) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
 
+          // Create transition overlay
+          const overlay = document.createElement('div');
+          overlay.className = 'page-transition';
+          document.body.appendChild(overlay);
 
+          // Trigger entrance
+          requestAnimationFrame(() => overlay.classList.add('active'));
 
-
-
-
-  // === PAGE TRANSITION LOGIC ===
-  document.querySelectorAll('a[href$=".html"]').forEach(link => {
-    if (link.hostname === location.hostname) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-
-        // Create transition overlay
-        const overlay = document.createElement('div');
-        overlay.className = 'page-transition';
-        document.body.appendChild(overlay);
-
-        // Trigger entrance
-        requestAnimationFrame(() => overlay.classList.add('active'));
-
-        // Navigate after animation
-        setTimeout(() => {
-          window.location = href;
-        }, 600);
-      });
-    }
-  });
-
-
-
-
-
-
-
+          // Navigate after animation
+          setTimeout(() => {
+            window.location = href;
+          }, 600);
+        });
+      }
+    });
   </script>
 </body>
 </html>

@@ -31,6 +31,7 @@ html, body {
   min-height: 100vh;
   font-family: Inter, system-ui, sans-serif;
   color: var(--text);
+  margin-top: 5vh;
   background:
     radial-gradient(1000px 600px at 6% 0%, rgba(0,191,255,.09), transparent 60%),
     radial-gradient(1200px 700px at 100% 60%, rgba(255,77,210,.08), transparent 60%),
@@ -132,7 +133,14 @@ a:hover { color: #7bd9ff; }
   transition: background 0.2s;
   background: transparent;
   border: none;
-  margin-right: 12px; /* INCREASED */
+  margin-right: 18px; /* FINAL: MORE SPACE ON MOBILE */
+}
+
+/* Extra safety: force on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    margin-right: 50px;
+  }
 }
 .hamburger span {
   width: 24px;

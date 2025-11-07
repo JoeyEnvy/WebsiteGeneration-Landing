@@ -1,22 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-  <!-- =========================================================
-       WEBSITE GENERATION LTD — VINYL & SIGNAGE PAGE
-       Full signage showcase • Lazy images • Matched theme
-  ============================================================ -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vinyl & Signage — Website Generation Ltd</title>
   <meta name="description" content="Professional vinyl signage, shopfronts, and vehicle graphics by Website Generation Ltd.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Website Generation Ltd">
+  <meta name="keywords" content="vinyl signage, shopfronts, vehicle decals, large-format printing, custom signage, UK">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Vinyl & Signage — Website Generation Ltd">
+  <meta property="og:description" content="Custom vinyl cutouts, vehicle wraps, large-format printing, and more.">
+  <meta property="og:image" content="images/14.png">
+  <meta property="og:url" content="https://websitegeneration.co.uk/vinyl.html">
+  <meta property="og:type" content="website">
   <link rel="canonical" href="https://websitegeneration.co.uk/vinyl.html">
-  <link rel="icon" type="image/png" href="images/9.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/14.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/14.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-</head>
 
+  <!-- LIGHTBOX CSS (MINIMAL, NO BLOAT) -->
+  <style>
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10,11,30,.96);
+      backdrop-filter: blur(12px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+      animation: zoomIn .4s cubic-bezier(.2,.8,.2,1);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,.1);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .lightbox-close:hover {
+      background: var(--brand-accent);
+      color: #000;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @media (max-width: 480px) {
+      .lightbox img { border-radius: 12px; }
+      .lightbox-close { top: 16px; right: 16px; width: 40px; height: 40px; font-size: 20px; }
+    }
+  </style>
+
+  <!-- FAVICON AND SEO META DATA FOR MOBILE AND TABLETS -->
+  <link rel="icon" href="images/14.png" sizes="32x32" type="image/png">
+</head>
 <body>
   <!-- BACKGROUND BLOBS -->
   <div class="bg-gradients">
@@ -58,37 +120,48 @@
     </div>
   </section>
 
-  <!-- VINYL GRID -->
+  <!-- VINYL GRID WITH LIGHTBOX -->
   <section id="vinyl" class="section section-alt">
     <div class="container">
       <h2 class="section-title reveal-up">Our Signage Work</h2>
       <p class="section-subtitle reveal-up delay-1">Custom vinyl cutouts, logos, vehicle wraps, and large-format prints for businesses and events across the UK.</p>
 
       <div class="vinyl-grid reveal-up delay-2">
-        <!-- Signage 1: Shopfront Panels -->
-        <div class="vinyl-item">
-          <img src="https://images.unsplash.com/photo-1610214213166-fb56ed052c6e?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk" alt="Shopfront Signage Example" loading="lazy">
-          <h4>Shopfront Panels</h4>
-          <p>Custom fascia panels with vinyl lettering, metallic finishes, and illuminated options.</p>
-        </div>
-        <!-- Signage 2: Vehicle Branding -->
-        <div class="vinyl-item">
-          <img src="https://images.unsplash.com/photo-1569746242-f5d0f60a59e4?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk" alt="Vehicle Branding Example" loading="lazy">
-          <h4>Vehicle Branding</h4>
-          <p>Full vehicle wraps and partial vehicle graphics to enhance brand visibility on the move.</p>
-        </div>
-        <!-- Signage 3: Indoor Signage -->
-        <div class="vinyl-item">
-          <img src="https://images.unsplash.com/photo-1585859379631-f035d46c4fa5?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk" alt="Indoor Signage Example" loading="lazy">
-          <h4>Indoor Signage</h4>
-          <p>High-quality indoor signage, including wall graphics and acrylic displays for offices and events.</p>
-        </div>
-        <!-- Signage 4: Acrylic Lettering -->
-        <div class="vinyl-item">
-          <img src="https://images.unsplash.com/photo-1586744217463-2f7cdb015f01?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk&ixid=MnwzNjAwMjJ8MHwxfGFsbHwxfHx8fHx8fHx8fDE2NzI4MTY2MTk" alt="Acrylic Lettering Example" loading="lazy">
-          <h4>3D & Acrylic Lettering</h4>
-          <p>Laser-cut acrylic or aluminium letters with stand-off mounts for depth and luxury presentation.</p>
-        </div>
+        <!-- 1. Shopfront Panel -->
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/77.png" data-alt="Custom shopfront vinyl signage with metallic finish">
+          <img src="images/77.png" alt="Shopfront vinyl signage" loading="lazy">
+          <div class="vinyl-caption">
+            <h4>Shopfront Panels</h4>
+            <p>Premium fascia panels with vinyl lettering and optional illumination.</p>
+          </div>
+        </a>
+
+        <!-- 2. Vehicle Wrap -->
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/78.png" data-alt="Full vehicle wrap with custom branding">
+          <img src="images/78.png" alt="Vehicle wrap" loading="lazy">
+          <div class="vinyl-caption">
+            <h4>Vehicle Branding</h4>
+            <p>Full and partial wraps using durable, weatherproof vinyl.</p>
+          </div>
+        </a>
+
+        <!-- 3. Indoor Graphics -->
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/67.webp" data-alt="Indoor wall vinyl graphics for office branding">
+          <img src="images/67.webp" alt="Indoor wall graphics" loading="lazy">
+          <div class="vinyl-caption">
+            <h4>Indoor Signage</h4>
+            <p>High-res wall graphics, frosted vinyl, and acrylic displays.</p>
+          </div>
+        </a>
+
+        <!-- 4. 3D Letters -->
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/65.jpg" data-alt="3D acrylic lettering with standoff mounts">
+          <img src="images/65.jpg" alt="3D acrylic letters" loading="lazy">
+          <div class="vinyl-caption">
+            <h4>3D & Acrylic Lettering</h4>
+            <p>Laser-cut letters with stand-off mounts for premium depth.</p>
+          </div>
+        </a>
       </div>
 
       <div class="cta-center reveal-up delay-3" style="margin-top:32px">
@@ -137,72 +210,100 @@
     </div>
   </footer>
 
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" id="lightbox-close">X</div>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- SCRIPTS -->
   <script>
     document.documentElement.classList.remove('no-js');
-    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // HEADER & SCROLLBAR
     (function(){
-      var header=document.getElementById('header');
-      var bar=document.getElementById('scrollbar');
+      const header = document.getElementById('header');
+      const bar = document.getElementById('scrollbar');
       function onScroll(){
-        if(header)header.classList.toggle('shrink',window.scrollY>60);
+        header.classList.toggle('shrink', window.scrollY > 60);
         if(bar){
-          var max=document.body.scrollHeight-window.innerHeight;
-          bar.style.width=(max>0?(window.scrollY/max)*100:0)+'%';
+          const max = document.body.scrollHeight - window.innerHeight;
+          bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
         }
       }
-      window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+      window.addEventListener('scroll', onScroll, {passive: true});
+      onScroll();
     })();
+
+    // MOBILE MENU
     (function(){
-      var burger=document.getElementById('burger');
-      var nav=document.getElementById('nav');
-      burger.addEventListener('click',function(){
-        var ex=burger.getAttribute('aria-expanded')==='true';
-        burger.setAttribute('aria-expanded',!ex);
+      const burger = document.getElementById('burger');
+      const nav = document.getElementById('nav');
+      burger.addEventListener('click', () => {
+        const expanded = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !expanded);
         nav.classList.toggle('open');
       });
-      nav.addEventListener('click',function(e){
+      nav.addEventListener('click', e => {
         if(e.target.closest('a')){
-          burger.setAttribute('aria-expanded','false');
+          burger.setAttribute('aria-expanded', 'false');
           nav.classList.remove('open');
         }
       });
     })();
 
+    // LIGHTBOX
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
 
-
-
-
-
-
-  // === PAGE TRANSITION LOGIC ===
-  document.querySelectorAll('a[href$=".html"]').forEach(link => {
-    if (link.hostname === location.hostname) {
-      link.addEventListener('click', function(e) {
+    document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
+      trigger.addEventListener('click', e => {
         e.preventDefault();
-        const href = this.getAttribute('href');
-
-        // Create transition overlay
-        const overlay = document.createElement('div');
-        overlay.className = 'page-transition';
-        document.body.appendChild(overlay);
-
-        // Trigger entrance
-        requestAnimationFrame(() => overlay.classList.add('active'));
-
-        // Navigate after animation
-        setTimeout(() => {
-          window.location = href;
-        }, 600);
+        const img = trigger.dataset.img;
+        const alt = trigger.dataset.alt;
+        lightboxImg.src = img;
+        lightboxImg.alt = alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
-    }
-  });
+    });
 
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    });
 
+    lightbox.addEventListener('click', e => {
+      if(e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
 
+    // ESC KEY CLOSE
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
 
-
-
-
+    // PAGE TRANSITION
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      if (link.hostname === location.hostname) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          const overlay = document.createElement('div');
+          overlay.className = 'page-transition';
+          document.body.appendChild(overlay);
+          requestAnimationFrame(() => overlay.classList.add('active'));
+          setTimeout(() => window.location = href, 600);
+        });
+      }
+    });
   </script>
 </body>
 </html>
