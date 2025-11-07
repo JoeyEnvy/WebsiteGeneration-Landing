@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <!-- =========================================================
+       WEBSITE GENERATION LTD — PROJECTS PAGE
+  ============================================================ -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Website Generation Ltd</title>
+  <meta name="description" content="View recent digital and media projects by Website Generation Ltd, including Apollo Heat Source and Sex Pistols Expose.">
+  <link rel="canonical" href="https://websitegeneration.co.uk/projects.html">
+  <link rel="icon" type="image/png" href="images/9.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/7.png" alt="Website Generation Ltd Logo" class="brand-mark" width="80" height="80">
+        <span>Website Generation<span class="suffix">.co.uk</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="vinyl.html" class="nav-link">Vinyl & Signage</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="videos.html" class="nav-link">Videos</a>
+        <a href="index.html#contact" class="nav-link btn btn-outline">Contact</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Toggle Menu" aria-controls="nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="scrollbar" id="scrollbar"></div>
+  </header>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h1 class="section-title reveal-up">Recent Projects</h1>
+      <p class="section-subtitle reveal-up delay-1">
+        A selection of websites, branding, and media projects built by Website Generation Ltd.
+      </p>
+
+      <div class="project-grid">
+        <article class="project-card reveal-up">
+          <img src="https://apolloheatsource.co.uk/images/Logo%20side%20ways.png"
+               alt="Apollo Heat Source logo" width="400" height="300" loading="lazy">
+          <h3><a href="https://apolloheatsource.co.uk" target="_blank" rel="noopener">ApolloHeatSource.co.uk</a></h3>
+          <p>Complete web build, brand identity, and digital service platform for a national heating company.</p>
+        </article>
+
+        <article class="project-card reveal-up delay-1">
+          <img src="https://sexpistolsexpose.com/images/WEBP%20Images%20All/Section%202%20Passport.webp"
+               alt="Sex Pistols Expose band passport" width="400" height="300" loading="lazy">
+          <h3><a href="https://sexpistolsexpose.com" target="_blank" rel="noopener">SexPistolsExpose.com</a></h3>
+          <p>Full band site with press kit, tour listings, and eCommerce integration for a major tribute act.</p>
+        </article>
+
+        <article class="project-card reveal-up delay-2">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=75"
+               alt="AI development workspace" width="400" height="300" loading="lazy">
+          <h3>Website Generation Platform</h3>
+          <p>Ongoing in-house development of our AI-powered site generator, enabling instant custom site builds.</p>
+        </article>
+      </div>
+
+      <div class="cta-center reveal-up delay-3">
+        <a href="videos.html" class="btn">See AI Videos</a>
+        <a href="vinyl.html" class="btn btn-outline">Explore Vinyl & Signage</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h4>Website Generation Ltd</h4>
+        <p class="muted">AI Web • Design • Media | UK Registered SC868009</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="vinyl.html">Vinyl & Signage</a></li>
+          <li><a href="videos.html">Videos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="https://www.youtube.com/@Devious_AI" target="_blank">YouTube – Devious AI</a></li>
+          <li><a href="mailto:joe@websitegeneration.co.uk">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Website Generation Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){
+      var header=document.getElementById('header');
+      var bar=document.getElementById('scrollbar');
+      function onScroll(){
+        if(header) header.classList.toggle('shrink', window.scrollY>60);
+        if(bar){
+          var max=document.body.scrollHeight - window.innerHeight;
+          bar.style.width=(max>0?(window.scrollY/max)*100:0)+'%';
+        }
+      }
+      window.addEventListener('scroll',onScroll,{passive:true});
+      onScroll();
+    })();
+    (function(){
+      var burger=document.getElementById('burger');
+      var nav=document.getElementById('nav');
+      burger.addEventListener('click',function(){
+        var ex=burger.getAttribute('aria-expanded')==='true';
+        burger.setAttribute('aria-expanded',!ex);
+        nav.classList.toggle('open');
+      });
+      nav.addEventListener('click',function(e){
+        if(e.target.closest('a')){
+          burger.setAttribute('aria-expanded','false');
+          nav.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
