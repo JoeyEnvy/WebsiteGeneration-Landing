@@ -124,48 +124,53 @@ window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
 
     contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();  // Prevent page reload
-      if (formStatus) formStatus.textContent = "";
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-      }
-      if (loader) loader.style.display = "inline-block"; // Show loader while submitting
+      e.preventDefault();  // Prevent page reset
+
+      // Show loader and disable submit button
+      loader.style.display = "inline-block";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
 
       const scriptURL = "https://script.google.com/macros/s/AKfycbyO0DP9Ld8FPbw29bK3osFLU_YxvRVeo1WGp9Iz2bCzpxHaaFuhBGqnDgpa-zFJ1ze6/exec";
 
       try {
+        // Send form data to Google Apps Script
         const response = await fetch(scriptURL, {
           method: "POST",
           body: new FormData(contactForm),
         });
 
         if (response.ok) {
-          if (formStatus) {
-            formStatus.textContent = "Message sent successfully!";
-            formStatus.style.color = "#00ff9d";  // Green for success
-          }
+          // Success: Show thank-you message
+          formStatus.textContent = "Thank you for your message! We will get back to you shortly.";
+          formStatus.style.color = "#00ff9d";  // Green success color
+
+          // Optionally hide the form after successful submission
+          contactForm.style.display = "none";
+
+          // Optionally clear the form fields
           contactForm.reset();
-          window.scrollTo({ top: 0, behavior: "smooth" });  // Scroll to top after sending message
-          contactForm.style.display = "none";  // Optionally hide form after submission
+
+          // Optionally, scroll to top
+          window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
           throw new Error("Server error");
         }
       } catch (err) {
-        if (formStatus) {
-          formStatus.textContent = err.message === "Failed to fetch"
-            ? "Network error. Please try again."
-            : "Failed to send message. Please try again.";
-          formStatus.style.color = "#ff6b6b";  // Red for error
-        }
+        // Error: Show error message
+        formStatus.textContent = err.message === "Failed to fetch"
+          ? "Network error. Please try again."
+          : "Failed to send message. Please try again.";
+        formStatus.style.color = "#ff6b6b";  // Red error color
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Send Message";
-        }
-        if (loader) loader.style.display = "none";  // Hide loader after submission
+        // Hide loader and enable the submit button again
+        loader.style.display = "none";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
+
+        // Clear the status message after a few seconds
         setTimeout(() => {
-          if (formStatus) formStatus.textContent = "";  // Clear status message after timeout
+          formStatus.textContent = "";
         }, 5000);
       }
     });
@@ -217,3 +222,48 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
     });
   }
 });
+
+
+// =========================
+// GOOGLE APPS SCRIPT CONTACT FORM (doPost function)
+// =========================
+/* 
+   Below is the Google Apps Script for handling contact form submissions.
+   You can modify the recipient email, subject, and message body as needed.
+*/
+function doPost(e) {
+  try {
+    const data = e.parameter;
+    const name = data.name || "No name";
+    const email = data.email || "No email";
+    const message = data.message || "No message";
+
+    const subject = `New Contact Form Message — ${name}`;
+    const body = `
+New message from WebsiteGeneration.co.uk
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+`;
+
+    // Send email to the specified address
+    MailApp.sendEmail({
+      to: "joe@websitegeneration.co.uk",   // your inbox
+      subject: subject,
+      body: body
+    });
+
+    // Return success response
+    return ContentService
+      .createTextOutput("OK")
+      .setMimeType(ContentService.MimeType.TEXT);
+  } catch (err) {
+    // Return error message if something goes wrong
+    return ContentService
+      .createTextOutput("ERROR: " + err)
+      .setMimeType(ContentService.MimeType.TEXT);
+  }
+}
