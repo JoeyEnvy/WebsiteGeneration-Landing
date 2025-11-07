@@ -234,9 +234,15 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
   const submitBtn = document.getElementById("submitBtn");
   const loader = document.getElementById("loader");
 
+  // Debugging to make sure form exists
+  console.log(contactForm);
+
   // Handle form submission
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();  // Prevent page reset or reload when form is submitted
+
+    // Debugging: Confirm form submission is being intercepted
+    console.log("Form is being submitted");
 
     // Show loader and disable submit button
     loader.style.display = "inline-block";
@@ -247,10 +253,13 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 
     try {
       // Send form data to Google Apps Script using fetch
+      console.log("Sending data to Google Apps Script...");
       const response = await fetch(scriptURL, {
         method: "POST",
         body: new FormData(contactForm), // Send form data
       });
+
+      console.log("Response status:", response.status); // Debugging: Check if response is OK
 
       if (response.ok) {
         // Success: Show thank-you message
@@ -270,6 +279,7 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
       }
     } catch (err) {
       // Error: Show error message
+      console.error("Error during form submission:", err); // Debugging: Log the error
       formStatus.textContent = err.message === "Failed to fetch"
         ? "Network error. Please try again."
         : "Failed to send message. Please try again.";
