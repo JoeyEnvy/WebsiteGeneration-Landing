@@ -6,7 +6,7 @@
 // =========================
 // DOM ELEMENTS
 // =========================
-const header = document.getElementById("header");
+const header = document.getElementById("header"); // Declare header once here
 const nav = document.getElementById("nav");
 const burger = document.getElementById("burger");
 const scrollbar = document.getElementById("scrollbar");
@@ -222,4 +222,3 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
     });
   }
 });
-
