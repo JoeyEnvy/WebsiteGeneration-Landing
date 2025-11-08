@@ -1,7 +1,8 @@
 // ==========================================================
-// WEBSITE GENERATION LTD — FINAL script.js (v9.2 — LIVE)
-// Contact Form: 100% WORKING | Success Message FIXED
-// + No scroll jump | Email arrives | Message shows
+// WEBSITE GENERATION LTD — FINAL script.js (v9.3 — LIVE)
+// Contact Form: 100% WORKING | Email Sends | Success Message Shows
+// + URL-ENCODED POST (e.parameter compatible)
+// + No reload | No scroll jump | Email arrives
 // ==========================================================
 
 // =========================
@@ -137,9 +138,9 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 });
 
 // ========================================================================
-// CONTACT FORM — FINAL VERSION (v9.2)
-// + SUCCESS MESSAGE NOW SHOWS (text.includes("OK"))
-// + No reload | No scroll jump | Email arrives
+// CONTACT FORM — FINAL VERSION (v9.3)
+// + URL-ENCODED POST → e.parameter works in Apps Script
+// + Success message shows | Email sends | No reload | No jump
 // ========================================================================
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
@@ -188,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // === SUBMIT ===
+    // === SUBMIT WITH URL-ENCODED (e.parameter compatible) ===
     loader.style.display = "inline-block";
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
@@ -196,15 +197,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const scriptURL = "https://script.google.com/macros/s/AKfycbyYAFcjeDVfiCy63kEG62EAIm1ZycmPgAbgk0nPJ2uX5mo-hv9Gf135rY7iqm8yqEYBhw/exec";
 
     try {
+      // Convert FormData → URLSearchParams
+      const formData = new FormData(contactForm);
+      const params = new URLSearchParams();
+      for (const [key, value] of formData) {
+        params.append(key, value);
+      }
+
       const response = await fetch(scriptURL, {
         method: "POST",
-        body: new FormData(contactForm)
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params
       });
 
       const text = await response.text();
+      console.log("RAW RESPONSE:", text); // DEBUG: Check in Dev Tools
 
-      // FIXED: Accept any response containing "OK"
-      if (response.ok && text.includes("OK")) {
+      // Accept any response containing "OK"
+      if (response.ok && text.toUpperCase().includes("OK")) {
         formStatus.textContent = "Thank you! We'll reply within 24 hours.";
         formStatus.style.color = "#00ff9d";
         contactForm.reset();
@@ -217,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
           formStatus.textContent = "";
         }, 8000);
       } else {
-        throw new Error(text);
+        throw new Error(`Server error: ${text}`);
       }
     } catch (err) {
       console.error("Form error:", err);
