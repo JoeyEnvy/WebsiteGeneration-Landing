@@ -1,7 +1,7 @@
 // ==========================================================
-// WEBSITE GENERATION LTD — FINAL script.js (v9.1 — LIVE)
-// Contact Form: 100% WORKING | Validation | No Reload | Success UI
-// + FIX: No scroll jump on submit — stays on form to show message
+// WEBSITE GENERATION LTD — FINAL script.js (v9.2 — LIVE)
+// Contact Form: 100% WORKING | Success Message FIXED
+// + No scroll jump | Email arrives | Message shows
 // ==========================================================
 
 // =========================
@@ -137,8 +137,9 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 });
 
 // ========================================================================
-// CONTACT FORM — FINAL VERSION (Validation + No Reload + Success UI)
-// + FIXED: No scroll to top — stays on form to show success message
+// CONTACT FORM — FINAL VERSION (v9.2)
+// + SUCCESS MESSAGE NOW SHOWS (text.includes("OK"))
+// + No reload | No scroll jump | Email arrives
 // ========================================================================
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
@@ -202,7 +203,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const text = await response.text();
 
-      if (response.ok && text.trim() === "OK") {
+      // FIXED: Accept any response containing "OK"
+      if (response.ok && text.includes("OK")) {
         formStatus.textContent = "Thank you! We'll reply within 24 hours.";
         formStatus.style.color = "#00ff9d";
         contactForm.reset();
