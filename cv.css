@@ -549,3 +549,50 @@ a:hover { color: #7bd9ff; }
   img { filter: grayscale(100%); }
   .site-footer { display: none; }
 }
+
+
+@media (max-width: 768px) {
+  body {
+    margin-top: -5vh;
+    margin-right: 5vh;
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    margin-right: 10vh;
+  }
+}
+
+/* Scoped isolation for Devious AI section only */
+.section.projects .devious-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.section.projects .devious-block .devious-imgs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 0 0 180px;
+}
+
+.section.projects .devious-block .devious-img-wrap {
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.section.projects .devious-block .devious-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.section.projects .devious-block .devious-info {
+  flex: 1;
+}
