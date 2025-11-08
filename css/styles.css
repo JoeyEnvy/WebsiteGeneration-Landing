@@ -1119,3 +1119,48 @@ window.addEventListener('load', () => {
   .vinyl-item picture,
   .vinyl-item img { height: 200px; }
 }
+
+
+/* CONTACT FORM VALIDATION STYLES */
+.contact-form input.error,
+.contact-form textarea.error {
+  border-color: #ff6b6b !important;
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+}
+.contact-form input:focus.error,
+.contact-form textarea:focus.error {
+  outline: 2px solid #ff6b6b;
+}
+
+/* ======================================================================
+   24. CONTACT FORM — CLIENT-SIDE VALIDATION (RED BORDERS + FOCUS)
+   ====================================================================== */
+.contact-form input.error,
+.contact-form textarea.error {
+  border-color: #ff6b6b !important;
+  background-color: rgba(255, 107, 107, 0.05) !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2) !important;
+}
+
+.contact-form input:focus.error,
+.contact-form textarea:focus.error {
+  outline: 2px solid #ff6b6b !important;
+  outline-offset: 2px !important;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.contact-form input.error,
+.contact-form textarea.error {
+  animation: shake 0.5s ease-in-out;
+}
+
+.contact-form input.success,
+.contact-form textarea.success {
+  border-color: #00ff9d !important;
+  box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.2) !important;
+}

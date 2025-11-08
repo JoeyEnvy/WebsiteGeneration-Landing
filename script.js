@@ -1,6 +1,6 @@
 // ==========================================================
-// WEBSITE GENERATION LTD — OPTIMIZED MAIN SCRIPT (v8.8 — FINAL)
-// Contact Form: 100% WORKING | No duplicate errors | Clean & Fast
+// WEBSITE GENERATION LTD — FINAL script.js (v9.0 — LIVE)
+// Contact Form: 100% WORKING | Validation | No Reload | Success UI
 // ==========================================================
 
 // =========================
@@ -13,14 +13,13 @@ const scrollbar = document.getElementById("scrollbar");
 const yearSpan = document.getElementById("year");
 
 // =========================
-// FORCE START AT TOP ON PAGE LOAD
+// FORCE START AT TOP
 // =========================
 window.history.scrollRestoration = "manual";
-window.scrollTo(0, 0);
 window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
 
 // =========================
-// SCROLLBAR + SHRINK HEADER (rAF-throttled)
+// SCROLLBAR + SHRINK HEADER
 // =========================
 let ticking = false;
 window.addEventListener("scroll", () => {
@@ -41,7 +40,7 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 
 // =========================
-// BURGER MENU TOGGLE (Accessible + Body Lock)
+// BURGER MENU
 // =========================
 if (burger && nav) {
   const toggleMenu = () => {
@@ -67,7 +66,7 @@ if (burger && nav) {
 }
 
 // =========================
-// SMOOTH SCROLL (single listener)
+// SMOOTH SCROLL
 // =========================
 document.addEventListener("click", (e) => {
   const link = e.target.closest('a[href^="#"]');
@@ -81,12 +80,12 @@ document.addEventListener("click", (e) => {
 });
 
 // =========================
-// REVEAL ON SCROLL + YEAR + YOUTUBE (on load)
+// REVEAL + YEAR + YOUTUBE
 // =========================
 window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 
-  // Reveal animations
+  // Reveal
   const revealEls = document.querySelectorAll(".reveal-up");
   if (revealEls.length) {
     const io = new IntersectionObserver((entries) => {
@@ -100,14 +99,11 @@ window.addEventListener("load", () => {
     revealEls.forEach(el => io.observe(el));
   }
 
-  // Year auto-update
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
+  // Year
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // YouTube click-to-play
-  const thumbs = document.querySelectorAll(".video-thumb");
-  thumbs.forEach(thumb => {
+  // YouTube
+  document.querySelectorAll(".video-thumb").forEach(thumb => {
     thumb.addEventListener("click", () => {
       if (thumb.querySelector("iframe")) return;
       const id = thumb.dataset.yt;
@@ -123,7 +119,7 @@ window.addEventListener("load", () => {
 });
 
 // =========================
-// PAGE TRANSITION (Smooth Navigation)
+// PAGE TRANSITION
 // =========================
 document.querySelectorAll('a[href$=".html"]').forEach(link => {
   if (link.hostname === location.hostname) {
@@ -140,21 +136,56 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 });
 
 // ========================================================================
-// CONTACT FORM — 100% WORKING (Version 1 – 8 Nov 2025)
+// CONTACT FORM — FINAL VERSION (Validation + No Reload + Success UI)
 // ========================================================================
-// DEPLOYMENT ID: AKfycbzopwDGRa9hu5y_NqelcYRnAp6mmvtpN7STEjNR_S2sFSOORRs4f7jp9MDiLdnJPW73yw
-// WEB APP URL: https://script.google.com/macros/s/AKfycbzopwDGRa9hu5y_NqelcYRnAp6mmvtpN7STEjNR_S2sFSOORRs4f7jp9MDiLdnJPW73yw/exec
-// STATUS: doGet() returns "OK" | Public Access | Email Confirmed
-// ========================================================================
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contactForm");
+  if (!contactForm) return;
+
   const formStatus = document.getElementById("formStatus");
   const submitBtn = document.getElementById("submitBtn");
   const loader = document.getElementById("loader");
+  const inputs = contactForm.querySelectorAll("input, textarea");
+
+  // Reset validation styles
+  const resetValidation = () => {
+    inputs.forEach(input => {
+      input.classList.remove("error");
+    });
+    formStatus.textContent = "";
+  };
 
   contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // STOP RELOAD
+    resetValidation();
 
+    let hasError = false;
+
+    // === VALIDATION ===
+    const name = contactForm.name.value.trim();
+    const email = contactForm.email.value.trim();
+    const message = contactForm.message.value.trim();
+
+    if (!name) {
+      contactForm.name.classList.add("error");
+      hasError = true;
+    }
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      contactForm.email.classList.add("error");
+      hasError = true;
+    }
+    if (!message) {
+      contactForm.message.classList.add("error");
+      hasError = true;
+    }
+
+    if (hasError) {
+      formStatus.textContent = "Please fill in all fields correctly.";
+      formStatus.style.color = "#ff6b6b";
+      return;
+    }
+
+    // === SUBMIT ===
     loader.style.display = "inline-block";
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
@@ -173,72 +204,34 @@ if (contactForm) {
         formStatus.textContent = "Thank you! We'll reply within 24 hours.";
         formStatus.style.color = "#00ff9d";
         contactForm.reset();
-        contactForm.style.display = "none";
+        // Form stays visible — just resets
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
-        throw new Error(text || "Server error");
+        throw new Error(text);
       }
     } catch (err) {
-      console.error("Form submission failed:", err);
+      console.error("Form error:", err);
       formStatus.textContent = "Failed. Email joe@websitegeneration.co.uk directly.";
       formStatus.style.color = "#ff6b6b";
     } finally {
       loader.style.display = "none";
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
-      setTimeout(() => { formStatus.textContent = ""; }, 6000);
+      setTimeout(() => { formStatus.textContent = ""; }, 8000);
     }
   });
-}
 
-// ========================================================================
-// GOOGLE APPS SCRIPT — FULLY WORKING (COPY-PASTE INTO PROJECT)
-// ========================================================================
-/*
-function doGet(e) {
-  return ContentService
-    .createTextOutput("OK")
-    .setMimeType(ContentService.MimeType.TEXT);
-}
-
-function doPost(e) {
-  try {
-    const data = e.parameter;
-    const name = data.name || "No name";
-    const email = data.email || "No email";
-    const message = data.message || "No message";
-
-    const subject = `New Contact Form Message — ${name}`;
-    const body = `
-New message from WebsiteGeneration.co.uk
-
-Name: ${name}
-Email: ${email}
-
-Message:
-${message}
-`.trim();
-
-    MailApp.sendEmail({
-      to: "joe@websitegeneration.co.uk",
-      subject: subject,
-      body: body
+  // Optional: Real-time validation
+  inputs.forEach(input => {
+    input.addEventListener("blur", () => {
+      if (input.value.trim() === "") {
+        input.classList.add("error");
+      } else {
+        input.classList.remove("error");
+      }
+      if (input.type === "email" && input.value && !/^\S+@\S+\.\S+$/.test(input.value)) {
+        input.classList.add("error");
+      }
     });
-
-    return ContentService
-      .createTextOutput("OK")
-      .setMimeType(ContentService.MimeType.TEXT);
-  } catch (err) {
-    return ContentService
-      .createTextOutput("ERROR: " + err.toString())
-      .setMimeType(ContentService.MimeType.TEXT);
-  }
-}
-*/
-// DEPLOY INSTRUCTIONS:
-// 1. Paste into Google Apps Script
-// 2. Deploy → New Deployment → Web App
-// 3. Execute as: Me
-// 4. Who has access: Anyone
-// 5. Copy /exec URL → use above
-// ========================================================================
+  });
+});
