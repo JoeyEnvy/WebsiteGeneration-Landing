@@ -1,9 +1,10 @@
 // ==========================================================
-// WEBSITE GENERATION LTD — FINAL script.js (v10.0 — LIVE)
+// WEBSITE GENERATION LTD — FINAL script.js (v10.1 — LIVE & FIXED)
 // + FULL ORIGINAL FEATURES (header, nav, scroll, etc.)
 // + Contact Form: File Upload + reCAPTCHA v3 + Dual Mode
 // + Email to joe@... + Auto-Reply + Success Message
 // + No reload | No jump | 100% Working
+// + NEW DEPLOYMENT URL (INBOX + FILE LINK)
 // ==========================================================
 
 // =========================
@@ -136,15 +137,15 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 });
 
 // ========================================================================
-// CONTACT FORM — FINAL v10.0 (WITH FILE UPLOAD + reCAPTCHA v3)
+// CONTACT FORM — FINAL v10.1 (WITH FILE UPLOAD + reCAPTCHA v3)
 // + Dual Mode: FormData (file) OR URLSearchParams (no file)
 // + reCAPTCHA v3 (Site Key: 6LeSZQYsAAAAAMbJjwH5BBfCpPapxXLBuk61fqii)
 // + Success message | Auto-reply | No reload
+// + NEW DEPLOYMENT URL → EMAILS IN INBOX + FILE LINK WITH NAME
 // ========================================================================
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
   if (!contactForm) return;
-
   const formStatus = document.getElementById("formStatus");
   const submitBtn = document.getElementById("submitBtn");
   const loader = document.getElementById("loader");
@@ -179,7 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzKVdO_DHvRoEQJM2nqDm-0cRtwbqtuEPLC0KuMVXnbMftaz1SE-6yorZ2BhhlUgPBE/exec";
+    // ← NEW DEPLOYMENT URL (v4.1 — INBOX + FILE LINK) ←
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzMkif3hJZlMuluoc_PvC8l1vDv_eyFqWuwBy5TMtHFKVBt4Djo2i4H0ryQb4NLAzcX/exec";
 
     try {
       // === reCAPTCHA v3: GET TOKEN (SITE KEY INCLUDED) ===

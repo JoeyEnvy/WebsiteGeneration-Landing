@@ -204,49 +204,43 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title text-center">Contact Us</h2>
-      <p class="text-center" style="margin-bottom:32px;">Let’s talk about your next project. Fast replies guaranteed.</p>
-      <div class="contact-grid">
-
-        <!-- ==================== CONTACT FORM (100% WORKING) ==================== -->
-<!-- ==================== CONTACT FORM (With reCAPTCHA v3 + File Upload) ==================== -->
-<!-- ==================== CONTACT FORM (FINAL — reCAPTCHA v3 + FILE UPLOAD) ==================== -->
-<form id="contactForm" class="contact-form" novalidate>
-  <div class="form-row">
-    <div>
-      <label for="name">Name *</label>
-      <input id="name" name="name" type="text" required placeholder="Your name">
-    </div>
-    <div>
-      <label for="email">Email *</label>
-      <input id="email" name="email" type="email" required placeholder="you@example.com">
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title text-center">Contact Us</h2>
+    <p class="text-center" style="margin-bottom:32px;">Let’s talk about your next project. Fast replies guaranteed.</p>
+    <div class="contact-grid">
+      <!-- CONTACT FORM — FINAL v10.1 (reCAPTCHA v3 + FILE UPLOAD + INBOX EMAILS) -->
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="form-row">
+          <div>
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" required placeholder="Your name">
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com">
+          </div>
+        </div>
+        <div style="margin-top:12px;">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell us what you need…"></textarea>
+        </div>
+        <div style="margin-top:12px;">
+          <label for="file">Attach File (Optional)</label>
+          <input id="file" name="file" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif" style="width:100%;">
+          <small style="color:var(--muted);">Max 5MB. Supported: PDF, Docs, Images.</small>
+        </div>
+        <button class="btn" type="submit" id="submitBtn">Send Message</button>
+        <div id="loader" style="display:none; margin-top:8px; font-size:0.9em;">Sending…</div>
+        <p id="formStatus" class="form-status"></p>
+      </form>
+      <!-- END CONTACT FORM -->
+      <aside>
+        <!-- Direct Contact Info and Map here -->
+      </aside>
     </div>
   </div>
-  <div style="margin-top:12px;">
-    <label for="message">Message *</label>
-    <textarea id="message" name="message" rows="5" required placeholder="Tell us what you need…"></textarea>
-  </div>
-  <div style="margin-top:12px;">
-    <label for="file">Attach File (Optional)</label>
-    <input id="file" name="file" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif" style="width:100%;">
-    <small style="color:var(--muted);">Max 5MB. Supported: PDF, Docs, Images.</small>
-  </div>
-  <button class="btn" type="submit" id="submitBtn">Send Message</button>
-  <div id="loader" style="display:none; margin-top:8px; font-size:0.9em;">Sending…</div>
-  <p id="formStatus" class="form-status"></p>
-</form>
-<!-- ==================== END CONTACT FORM ==================== -->
-<!-- ==================== END CONTACT FORM ==================== -->
-        <!-- ==================== END CONTACT FORM ==================== -->
-
-        <aside>
-          <!-- Direct Contact Info and Map here -->
-        </aside>
-      </div>
-    </div>
-  </section>
+</section>
 
   <!-- FOOTER -->
   <footer class="footer">
