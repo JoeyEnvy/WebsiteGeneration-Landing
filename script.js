@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.textContent = "Sending...";
 
     // ← NEW DEPLOYMENT URL (v4.1 — INBOX + FILE LINK) ←
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzMkif3hJZlMuluoc_PvC8l1vDv_eyFqWuwBy5TMtHFKVBt4Djo2i4H0ryQb4NLAzcX/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbz_1RSNn_WZqxAakMaTdMw6pVArWMSIJ-p7nEKHG4t6RBeIjIOivswJU35YotAuyKbC/exec";
 
     try {
       // === reCAPTCHA v3: GET TOKEN (SITE KEY INCLUDED) ===
