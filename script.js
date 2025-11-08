@@ -1,6 +1,7 @@
 // ==========================================================
-// WEBSITE GENERATION LTD — FINAL script.js (v9.0 — LIVE)
+// WEBSITE GENERATION LTD — FINAL script.js (v9.1 — LIVE)
 // Contact Form: 100% WORKING | Validation | No Reload | Success UI
+// + FIX: No scroll jump on submit — stays on form to show message
 // ==========================================================
 
 // =========================
@@ -137,6 +138,7 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
 
 // ========================================================================
 // CONTACT FORM — FINAL VERSION (Validation + No Reload + Success UI)
+// + FIXED: No scroll to top — stays on form to show success message
 // ========================================================================
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
@@ -190,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzopwDGRa9hu5y_NqelcYRnAp6mmvtpN7STEjNR_S2sFSOORRs4f7jp9MDiLdnJPW73yw/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyYAFcjeDVfiCy63kEG62EAIm1ZycmPgAbgk0nPJ2uX5mo-hv9Gf135rY7iqm8yqEYBhw/exec";
 
     try {
       const response = await fetch(scriptURL, {
@@ -204,8 +206,14 @@ document.addEventListener("DOMContentLoaded", () => {
         formStatus.textContent = "Thank you! We'll reply within 24 hours.";
         formStatus.style.color = "#00ff9d";
         contactForm.reset();
-        // Form stays visible — just resets
-        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        // STAY ON FORM — SHOW SUCCESS MESSAGE
+        contactForm.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        // Auto-clear after 8 seconds
+        setTimeout(() => {
+          formStatus.textContent = "";
+        }, 8000);
       } else {
         throw new Error(text);
       }
@@ -217,7 +225,6 @@ document.addEventListener("DOMContentLoaded", () => {
       loader.style.display = "none";
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
-      setTimeout(() => { formStatus.textContent = ""; }, 8000);
     }
   });
 
