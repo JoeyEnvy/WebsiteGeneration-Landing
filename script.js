@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxxwr7F-fW6pTPq1sXMOkR1GVk7rHs53IDdQpluEwi38KiGuPRzOb_VkZZXKjDBUOto0w/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwNXrQqwHpBWTXULCfcaaeZeVwKEXBtAnHV6aMsiXMHK5iO3fu_dE8q3moqZMvxtkqUow/exec";
 
     try {
       // === reCAPTCHA v3: GET TOKEN (SITE KEY INCLUDED) ===
