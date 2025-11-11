@@ -1,266 +1,381 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Joe Mort — Visual CV | Website Generation Ltd</title>
-  <meta name="description" content="Interactive portfolio CV of Joe Mort — Creative Developer, Designer, Musician, and Founder of Website Generation Ltd." />
-  <!-- Preload key images -->
-  <link rel="preload" href="images/cv.jpg" as="image">
-  <link rel="preload" href="images/8.png" as="image">
-  <link rel="preload" href="images/11.png" as="image">
-  <link rel="preload" href="images/12.png" as="image">
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
-  <!-- Fonts + CSS -->
+  <meta name="description" content="Visual CV of Joe Mort — Creative Developer, AI/Backend/Frontend Engineer, and Founder of Website Generation Ltd." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="cv.css" />
-  <script defer src="cv.js"></script>
+  <style>
+    /* Top-right fixed controls */
+    .top-controls{
+      position:fixed; top:12px; right:16px; display:flex; gap:12px; align-items:center; z-index:10000;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .top-controls a,.top-controls button{
+      background:#0a66ff; color:#fff; border:none; border-radius:8px; padding:8px 14px;
+      font-size:.85rem; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:6px;
+      cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.15); transition:background .2s ease, transform .2s ease;
+    }
+    .top-controls a:hover,.top-controls button:hover{ background:#00b4d8; transform:translateY(-2px); }
+    @media print { .top-controls{ display:none !important; } }
+    /* Scroll bar (works with script below) */
+    #scrollbar{ position:fixed; top:0; left:0; width:0%; height:4px; background:linear-gradient(90deg,#0a66ff,#00b4d8,#00ffd0);
+      box-shadow:0 0 10px rgba(10,102,255,.6); z-index:9999; transition:width .15s ease-out; }
+  </style>
 </head>
 <body>
-  <!-- Fixed Header -->
-  <header id="site-header" class="fixed-header">
-    <div class="header-top">
-      <div class="header-left">
-        <div class="logo" aria-hidden="true">WG</div>
-        <div class="title">
-          <h1>Joe Mort</h1>
-          <p>Creative Developer | Designer</p>
-          <p class="meta">Neath, Wales · <a href="tel:+447478773451">07478 773451</a> · <a href="mailto:joe@websitegeneration.co.uk">joe@websitegeneration.co.uk</a> · <a href="mailto:support@websitegeneration.co.uk">support@websitegeneration.co.uk</a></p>
-        </div>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <nav class="header-right" id="mobile-menu">
-      <a href="index.html" class="btn" target="_blank" rel="noopener">Website - Websitegeneration.co.uk</a>
-      <a href="https://websitegeneration.co.uk" class="btn" target="_blank" rel="noopener">Portfolio</a>
-      <button class="btn" id="btn-pdf" type="button" aria-label="Print or Save as PDF">PDF</button>
-    </nav>
-  </header>
 
-  <!-- Main -->
-  <main class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar reveal">
-      <section class="profile">
-        <img src="images/cv.jpg" alt="Joe Mort" class="profile-img" />
-        <h3>Profile</h3>
+  <!-- Fixed top-right controls -->
+  <nav class="top-controls" aria-label="Primary quick actions">
+    <a href="https://websitegeneration.co.uk" target="_blank" rel="noopener">
+      <i class="fa-solid fa-globe"></i> websitegeneration.co.uk
+    </a>
+    <a href="https://github.com/JoeyEnvy/WebsiteGeneration" target="_blank" rel="noopener">
+      <i class="fa-brands fa-github"></i> GitHub Repo
+    </a>
+    <button type="button" onclick="window.print()">
+      <i class="fa-solid fa-file-pdf"></i> Download PDF
+    </button>
+  </nav>
+
+  <!-- Intro strip -->
+  <section class="intro">
+    <img src="images/cv.jpg" alt="Joe Mort" class="intro-img" />
+    <div class="intro-info">
+      <h1>Joe Mort</h1>
+      <p class="role">Creative Developer · AI · Backend · Frontend</p>
+      <p class="contact">
+        Neath, Wales · <a href="tel:+447478773451">07478 773451</a> ·
+        <a href="mailto:joe@websitegeneration.co.uk">joe@websitegeneration.co.uk</a> ·
+        <a href="mailto:support@websitegeneration.co.uk">support@websitegeneration.co.uk</a>
+      </p>
+      <p class="summary">
+        Full-stack builder combining AI automation with design precision. Founder of <strong>Website Generation Ltd</strong>, delivering
+        systems that connect OpenAI models, API automation, Stripe checkout, domain control, and live deployment. Blends frontend polish
+        with backend reliability for full production pipelines.
+      </p>
+      <ul class="intro-metrics">
+        <li><strong>40K+</strong><span>Social followers</span></li>
+        <li><strong>200K+</strong><span>YouTube views</span></li>
+        <li><strong>5+ yrs</strong><span>Experience</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Integrated overview -->
+  <section class="card">
+    <h2><i class="fa-solid fa-network-wired"></i> Integrated Professional Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-box">
+        <h3>Website Generation Ltd — AI Web Systems</h3>
         <p>
-          Creative full-stack developer and designer with deep technical understanding of web architecture, automation, and AI media systems. Combines design-driven thinking with real deployment capability — building entire pipelines from domain registration and payment integration to visual branding and AI content. Founder of Website Generation Ltd, delivering modern AI-powered websites and automation systems to clients across web, media, and entertainment sectors. Also an experienced musician, performer, and content creator managing online communities exceeding 18K followers and 200K YouTube views.
+          Founder and full-stack architect of <strong>Website Generation Ltd</strong>. Designs and deploys automated web platforms integrating 
+          <strong>OpenAI</strong> for content generation, <strong>Stripe</strong> for payments, and 
+          <strong>GoDaddy / Netlify / GitHub</strong> APIs for domain purchase and deployment. Experienced in 
+          <strong>Express.js</strong>, environment management, DNS, and scalable hosting automation.
+        </p>
+      </div>
+      <div class="overview-box">
+        <h3>Devious AI — Cinematic AI Film Creation</h3>
+        <p>
+          Creator of <strong>Devious AI</strong> cinematic shorts using <strong>Stable Diffusion, ComfyUI, AnimateDiff, Runway ML,</strong> 
+          and <strong>ElevenLabs</strong>. Produces complete AI video workflows from prompt to post-production using 
+          <strong>Premiere Pro</strong> and <strong>After Effects</strong>, achieving photoreal motion and dramatic tone.
+        </p>
+      </div>
+      <div class="overview-box">
+        <h3>Nina Nova — AI Persona & Visual Research</h3>
+        <p>
+          Developed the <strong>Nina Nova</strong> virtual persona through <strong>LoRA training</strong> and 
+          <strong>Stable Diffusion</strong> pipelines. Creates consistent, hyper-realistic imagery and animation using 
+          <strong>ComfyUI</strong> workflows, refining realism and identity for cross-platform media presence.
+        </p>
+      </div>
+      <div class="overview-box">
+        <h3>Music & Live Performance — Sex Pistols Exposé / NVS</h3>
+        <p>
+          Performs internationally as <strong>Sid Vicious</strong> with <strong>Sex Pistols Exposé</strong> and fronts <strong>NVS</strong>. 
+          Tours across the UK, Amsterdam, and Germany. Handles media design, web presence, and promotion — integrating music, 
+          branding, and automation experience into a unified creative ecosystem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key achievements -->
+  <section class="card">
+    <h2><i class="fa-solid fa-trophy"></i> Key Achievements</h2>
+    <ul class="bullets">
+      <li>Automated Website Generation’s domain-hosting-deployment flow using Node.js, GoDaddy, Netlify, GitHub, and Stripe APIs.</li>
+      <li>Produced 25+ AI video shorts (Devious AI / Nina Nova) with Stable Diffusion + ComfyUI + AnimateDiff pipelines.</li>
+      <li>Delivered live commercial/band sites including ApolloHeatSource.co.uk and SexPistolsExpose.com.</li>
+    </ul>
+  </section>
+
+  <!-- Two-column grid -->
+  <main class="grid">
+    <!-- Left column -->
+    <aside class="col-left">
+      <!-- Profile -->
+      <section class="card">
+        <h2><i class="fa-solid fa-id-card-clip"></i> Profile</h2>
+        <p>
+          Creative full-stack developer and designer with deep knowledge of web architecture, automation, and AI media systems.
+          Ships production pipelines from idea to live product. Blends design thinking with solid backend ops.
         </p>
       </section>
-      <section class="skills">
-        <h3>Core Competencies</h3>
-        <ul>
-          <li><strong>Web Development:</strong> HTML5, CSS3, JavaScript (ES6+), Node.js, Express, REST APIs, Netlify, Render, Vercel</li>
-          <li><strong>Frontend/UI:</strong> Modular JS architecture, responsive design, Tailwind, Framer Motion, animations, UX logic</li>
-          <li><strong>Backend & APIs:</strong> OpenAI API, Stripe Checkout, GoDaddy Domain API, Netlify CLI, GitHub Actions automation</li>
-          <li><strong>AI Systems:</strong> Stable Diffusion, ComfyUI, AnimateDiff, LoRA training, ChatGPT automation, AI video generation</li>
-          <li><strong>Design & Branding:</strong> Photoshop, Illustrator, Premiere Pro, After Effects, Blender 3D, Webflow, Spline 3D</li>
-          <li><strong>Systems & DevOps:</strong> Git, CLI automation, DNS configuration, GitHub Pages, environment variables</li>
-          <li><strong>Creative & Marketing:</strong> Copywriting, SEO, video editing, photography, social growth, community management</li>
+
+      <!-- Projects & Links -->
+      <section class="card">
+        <h2><i class="fa-solid fa-diagram-project"></i> Projects & Links</h2>
+        <ul class="link-grid">
+          <li><a href="https://websitegeneration.co.uk" target="_blank" rel="noopener">
+            <i class="fas fa-globe"></i><span>Website Generation — Live</span><b>websitegeneration.co.uk</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://github.com/JoeyEnvy/WebsiteGeneration" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i><span>WebsiteGeneration — Repo</span><b>github.com/JoeyEnvy/WebsiteGeneration</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://github.com/JoeyEnvy/WebsiteGeneration/tree/main/backend" target="_blank" rel="noopener">
+            <i class="fa-solid fa-server"></i><span>Backend — Capability</span><b>/WebsiteGeneration/backend</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://apolloheatsource.co.uk" target="_blank" rel="noopener">
+            <i class="fas fa-fire"></i><span>Client</span><b>apolloheatsource.co.uk</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://sexpistolsexpose.com" target="_blank" rel="noopener">
+            <i class="fas fa-guitar"></i><span>Band</span><b>sexpistolsexpose.com</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://github.com/joeyenvy" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i><span>GitHub</span><b>github.com/joeyenvy</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://instagram.com/pretty.envious" target="_blank" rel="noopener">
+            <i class="fas fa-camera"></i><span>Instagram</span><b>@pretty.envious</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://instagram.com/nvs_officialuk" target="_blank" rel="noopener">
+            <i class="fas fa-microphone"></i><span>Instagram</span><b>@nvs_officialuk</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://www.youtube.com/channel/UCAjcm0xvvQEwxGbJFJ2Q_tA" target="_blank" rel="noopener">
+            <i class="fab fa-youtube"></i><span>YouTube</span><b>NVS Channel</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="https://open.spotify.com/artist/7cLtOxzpA7UbEg1OLOKiQ9" target="_blank" rel="noopener">
+            <i class="fab fa-spotify"></i><span>Spotify</span><b>NVS Artist</b><i class="fas fa-arrow-up-right-from-square"></i></a></li>
+
+          <li><a href="mailto:joemortnvs@gmail.com">
+            <i class="fas fa-envelope"></i><span>Email</span><b>joemortnvs@gmail.com</b><i class="fas fa-paper-plane"></i></a></li>
         </ul>
       </section>
-      <section class="links">
-        <h3>Links & Contacts</h3>
-        <ul class="link-grid">
-          <li><a href="https://websitegeneration.co.uk" target="_blank" rel="noopener"><i class="fas fa-globe"></i><span>Website</span><b>websitegeneration.co.uk</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="https://apolloheatsource.co.uk" target="_blank" rel="noopener"><i class="fas fa-fire"></i><span>Fire</span><b>apolloheatsource.co.uk</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="https://sexpistolsexpose.com" target="_blank" rel="noopener"><i class="fas fa-guitar"></i><span>Guitar</span><b>sexpistolsexpose.com</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="https://github.com/joeyenvy" target="_blank" rel="noopener"><i class="fab fa-github"></i><span>Code</span><b>github.com/joeyenvy</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="https://instagram.com/pretty.envious" target="_blank" rel="noopener"><i class="fas fa-camera"></i><span>Camera</span><b>@pretty.envious</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="https://instagram.com/nvs_officialuk" target="_blank" rel="noopener"><i class="fas fa-microphone"></i><span>Mic</span><b>@nvs_officialuk</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="https://www.youtube.com/channel/UCAjcm0xvvQEwxGbJFJ2Q_tA" target="_blank" rel="noopener"><i class="fab fa-youtube"></i><span>TV</span><b>YouTube: NVS Channel</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="https://open.spotify.com/artist/7cLtOxzpA7UbEg1OLOKiQ9" target="_blank" rel="noopener"><i class="fab fa-spotify"></i><span>Music</span><b>Spotify: NVS Artist</b><i class="fas fa-external-link-alt"></i></a></li>
-          <li><a href="mailto:joemortnvs@gmail.com"><i class="fas fa-envelope"></i><span>Email</span><b>joemortnvs@gmail.com</b><i class="fas fa-paper-plane"></i></a></li>
+
+      <!-- Core competencies -->
+      <section class="card">
+        <h2><i class="fa-solid fa-screwdriver-wrench"></i> Core Competencies</h2>
+        <ul class="bullets">
+          <li><strong>Web Dev:</strong> HTML5, CSS3, JavaScript (ES6+), Node.js, Express, REST</li>
+          <li><strong>Frontend/UI:</strong> Modular JS, responsive UI, animations, Tailwind, UX systems</li>
+          <li><strong>Backend/DevOps:</strong> OpenAI, Stripe, GoDaddy, Netlify, GitHub Actions, Render, Vercel, DNS</li>
+          <li><strong>AI:</strong> Stable Diffusion, ComfyUI, AnimateDiff, LoRA training, automation</li>
+          <li><strong>Design/Media:</strong> Photoshop, Illustrator, Premiere, After Effects, Blender, Webflow</li>
+          <li><strong>Ops:</strong> Git, CLI, logging, retries, env switching, observability basics</li>
+          <li><strong>Admin/Coordination:</strong> Scheduling, documentation, CRM, analytics reports, client correspondence</li>
         </ul>
+      </section>
+
+      <!-- Core technologies -->
+      <section class="card">
+        <h2><i class="fa-solid fa-microchip"></i> Core Technologies</h2>
+        <ul class="bullets">
+          <li><strong>Frameworks:</strong> React, Next.js, Node.js, Express</li>
+          <li><strong>Languages:</strong> JavaScript (ES6+), Python, HTML5, CSS3</li>
+          <li><strong>APIs & Automation:</strong> OpenAI, Stripe, GoDaddy, Netlify, GitHub, REST</li>
+          <li><strong>CMS & Tools:</strong> Payload, WordPress, Webflow, Figma</li>
+          <li><strong>Versioning & CI/CD:</strong> Git, GitHub Actions, Netlify CLI</li>
+        </ul>
+      </section>
+
+      <!-- Tech stack chips -->
+      <section class="card">
+        <h2><i class="fa-solid fa-layer-group"></i> Technical Stack</h2>
+        <div class="chips">
+          <span><i class="fa-brands fa-node-js"></i> Node.js + Express</span>
+          <span><i class="fa-solid fa-credit-card"></i> Stripe Checkout</span>
+          <span><i class="fa-solid fa-globe"></i> GoDaddy Domains API</span>
+          <span><i class="fa-solid fa-wand-magic-sparkles"></i> OpenAI API</span>
+          <span><i class="fa-solid fa-cloud-arrow-up"></i> Netlify CLI / GitHub Pages</span>
+          <span><i class="fa-solid fa-database"></i> Sessions + Logging</span>
+          <span><i class="fa-solid fa-robot"></i> Stable Diffusion + LoRA</span>
+        </div>
       </section>
     </aside>
 
-    <!-- Content -->
-    <section class="content">
-      <section class="section hero reveal">
-        <h2>Professional Summary <span>●</span></h2>
-        <p class="hero-text">
-          Innovative leader in creative development and AI integration, with a proven track record of building scalable web solutions and engaging digital experiences. Passionate about pushing the boundaries of technology and design to deliver impactful results for clients and communities.
-        </p>
-        <div class="hero-metrics">
-          <div class="metric"><strong>40K+</strong> Social Followers</div>
-          <div class="metric"><strong>200K+</strong> YouTube Views</div>
-          <div class="metric"><strong>5+</strong> Years Experience</div>
-        </div>
-      </section>
+    <!-- Right column -->
+    <section class="col-right">
+      <!-- Projects (visual cards) -->
+      <section class="card">
+        <h2><i class="fa-solid fa-rocket"></i> Highlighted Projects</h2>
 
-      <section class="section projects reveal">
-        <h2>Highlighted Projects <span>●</span></h2>
-        <article class="project-card" data-link="https://websitegeneration.co.uk">
-          <img src="images/8.png" alt="Website Generation preview" width="320" height="200" loading="lazy" />
+        <article class="project">
+          <img src="images/8.png" alt="Website Generation platform" />
           <div>
-            <h3>WebsiteGeneration.co.uk — Founder / Lead Developer</h3>
-            <p>AI-powered website generator built from scratch using Node.js, Express, Stripe, GoDaddy API, and OpenAI. Automates domain purchase, hosting deployment, DNS setup, and Stripe checkout flows. Features modular JS architecture, live previews, dynamic pricing, and session management.</p>
-            <p class="links-inline"><a href="https://websitegeneration.co.uk" target="_blank" rel="noopener">Live</a> · <a href="https://github.com/joeyenvy/WebsiteGeneration" target="_blank" rel="noopener">Repo</a></p>
+            <h3>Website Generation — Founder / Lead Developer</h3>
+            <p>
+              AI-powered website generator. Automates domain purchase, DNS, hosting deployment, and Stripe checkout with OpenAI-driven content.
+              Modular JS frontend with live preview and dynamic pricing. Express backend with retries, environment switching, and logging.
+            </p>
+            <ul class="kv">
+              <li><span>Status</span><b>In active development</b></li>
+              <li><span>Focus</span><b>AI · Backend · DevOps</b></li>
+            </ul>
+            <p class="links-inline">
+              <a href="https://websitegeneration.co.uk" target="_blank" rel="noopener">Live</a> ·
+              <a href="https://github.com/JoeyEnvy/WebsiteGeneration" target="_blank" rel="noopener">Repo</a> ·
+              <a href="https://github.com/JoeyEnvy/WebsiteGeneration/tree/main/backend" target="_blank" rel="noopener">Backend</a>
+            </p>
           </div>
         </article>
-        <article class="project-card" data-link="https://apolloheatsource.co.uk">
-          <img src="images/11.png" alt="Apollo Heat Source" width="320" height="200" loading="lazy" />
+
+        <article class="project">
+          <img src="images/11.png" alt="Apollo Heat Source" />
           <div>
             <h3>ApolloHeatSource.co.uk — Web Designer / SEO Engineer</h3>
-            <p>Created responsive commercial site with SEO optimization, analytics, and branding consistency.</p>
+            <p>Responsive commercial site with SEO, analytics, and branding. Fast content delivery and clean structure.</p>
             <p class="links-inline"><a href="https://apolloheatsource.co.uk" target="_blank" rel="noopener">Live</a></p>
           </div>
         </article>
-        <article class="project-card" data-link="https://sexpistolsexpose.com">
-          <img src="https://scontent-man2-1.xx.fbcdn.net/v/t39.30808-6/489279100_1221837546610826_6895354551620555989_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=fd5iLSh8-9oQ7kNvwGGKDs_&_nc_oc=AdlES4s1hUAqwU7MUzjzvCiX4jC3JnoHctZFXLKFr4bIatkoxXg3tsaE8bu-9jWihsI&_nc_zt=23&_nc_ht=scontent-man2-1.xx&_nc_gid=dC0HOn7fiXeMH8Lh-Iqz3Q&oh=00_Afi1GbY0rlWCusLgbtO9V7awEn8p2Erky1eqCx45-M6o0w&oe=6913F41E" alt="Sex Pistols Expose" width="320" height="200" loading="lazy" />
+
+        <article class="project">
+          <img src="images/900.jpg" alt="Sex Pistols Exposé" onerror="this.src='https://scontent-man2-1.xx.fbcdn.net/v/t39.30808-6/489279100_1221837546610826_6895354551620555989_n.jpg'" />
           <div>
             <h3>SexPistolsExpose.com — Creative Director / Developer</h3>
-            <p>Designed and maintains the official band website integrating videos, galleries, and merch. Handles web branding, graphics, and social integration.</p>
+            <p>
+              Official band site featuring live footage, posters, merch, and tour schedules. 
+              Responsible for web branding, video production, and full responsive design integration with social media and YouTube embeds.
+            </p>
             <p class="links-inline"><a href="https://sexpistolsexpose.com" target="_blank" rel="noopener">Live</a></p>
           </div>
         </article>
 
-
-
-
-
-<article class="project-card" data-link="#">
-  <img src="images/12.png" alt="Nina Nova AI" width="320" height="200" loading="lazy" />
-  <div>
-    <h3>Nina Nova AI — AI Research / Content Creator</h3>
-    <p>
-      Built a full AI-driven workflow for generating photorealistic images and animations using
-      Stable Diffusion + ComfyUI. Trained LoRA models for consistent identity and realism across
-      outputs. Explores automation and monetization through AI personas.
-    </p>
-  </div>
-</article>
-
-
-
-<article class="devious-block project-card" data-link="https://www.youtube.com/@Devious_AI">
-  <div class="devious-imgs">
-    <div class="devious-img-wrap">
-      <img src="https://i.ytimg.com/an_webp/Ry0_XWdU2tU/mqdefault_6s.webp?du=3000&sqp=CP-4vcgG&rs=AOn4CLBgB4duascwvce50BK1RwJChl-d6Q"
-           alt="Devious AI YouTube Channel">
-    </div>
-    <div class="devious-img-wrap">
-      <img src="images/797.jpg" alt="Devious AI Preview">
-    </div>
-  </div>
-
-  <div class="devious-info">
-    <h3>Devious AI — AI Film & Trailer Creator</h3>
-    <p>
-      YouTube channel producing cinematic AI film trailers and shorts using
-      <strong>Midjourney</strong>, <strong>ComfyUI</strong>, <strong>Runway ML</strong>,
-      <strong>Eleven Labs</strong>, and <strong>Premiere Pro</strong>.
-      Titles include <em>Alien Earth</em> and <em>Predator Badlands</em>,
-      blending photorealistic visuals, motion synthesis, and AI voice design.
-    </p>
-    <p class="links-inline">
-      <a href="https://www.youtube.com/@Devious_AI" target="_blank" rel="noopener">YouTube Channel</a>
-    </p>
-  </div>
-</article>
-
-
-      </section>
-
-      <section class="section experience reveal">
-        <h2>Professional Experience <span>●</span></h2>
-        <article class="experience-item">
-          <h3>Founder & Lead Developer — Website Generation Ltd (2023 – Present)</h3>
-          <p>Built end-to-end AI web platform integrating OpenAI, Stripe, and GoDaddy. Engineered backend routes for domain automation, hosting deployment, and DNS updates. Designed dark luxury UI and full responsive architecture. Managed production deployments via Render and Netlify.</p>
+        <article class="project">
+          <img src="images/12.png" alt="Nina Nova AI" />
+          <div>
+            <h3>Nina Nova AI — AI Research / Content Creator</h3>
+            <p>Stable Diffusion + ComfyUI pipeline. LoRA training for identity consistency and realism. Motion via AnimateDiff; focus on lighting and texture fidelity.</p>
+          </div>
         </article>
-        <article class="experience-item">
-          <h3>Graphic Designer & Developer — Select Signs Ltd (2019 – Present)</h3>
-          <p>Designed custom signage using AutoCAD, Illustrator, and Photoshop. Created proofs and prepared files for print and CNC cutting. Assisted in branding and digital workflow modernization.</p>
-        </article>
-        <article class="experience-item">
-          <h3>Creative Director / Performer — Sex Pistols Expose / NVS (2019 – Present)</h3>
-          <p>Lead singer and guitarist for NVS; bassist and actor for Sex Pistols Expose. Produced videos, photo shoots, and merch lines. Managed social media accounts with 18K+ followers and 200K+ YouTube views. Created and edited music and performance videos using Premiere Pro and Logic Pro.</p>
+
+        <article class="project devious reveal">
+          <div class="devious-wrap">
+            <div class="devious-img">
+              <img src="images/797.jpg" alt="Devious AI preview" />
+            </div>
+            <div class="devious-content">
+              <h3>Devious AI — AI Film & Trailer Creator</h3>
+              <p>
+                High-fidelity cinematic shorts combining <strong>Midjourney</strong>,
+                <strong>ComfyUI</strong>, <strong>Runway ML</strong>, and
+                <strong>ElevenLabs</strong>, edited in <strong>Premiere Pro</strong>.
+                Produces photoreal sci-fi mini-films such as
+                <em>Alien: Earth</em> and <em>Predator: Badlands</em>.
+              </p>
+              <p class="links-inline">
+                <a href="https://www.youtube.com/@Devious_AI" target="_blank" rel="noopener">Watch on YouTube</a>
+              </p>
+            </div>
+          </div>
         </article>
       </section>
 
-      <section class="section education reveal">
-        <h2>Education <span>●</span></h2>
-        <article class="education-item">
-          <h3>Neath College (2017 – 2020)</h3>
-          <p>BTEC ICT Level 3 Diploma</p>
-          <p>BTEC Music Level 2 Diploma</p>
-          <p>BTEC Welsh Baccalaureate</p>
+      <!-- Experience -->
+      <section class="card">
+        <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+
+        <article class="timeline">
+          <div class="time"><span>2023–Present</span></div>
+          <div class="item">
+            <h3>Founder & Lead Developer — Website Generation Ltd</h3>
+            <p>AI web platform integrating OpenAI, Stripe, and GoDaddy APIs. Engineered domain automation, hosting, DNS updates, and deployments on Render/Netlify. Designed modern UI and responsive architecture.</p>
+          </div>
         </article>
-        <article class="education-item">
-          <h3>Ysgol Bae Baglan (2016 – 2017)</h3>
-          <p>GCSEs (6 subjects including English, Mathematics, Science, History, Religious Education, Welsh Baccalaureate)</p>
+
+        <article class="timeline">
+          <div class="time"><span>2022–2023</span></div>
+          <div class="item">
+            <h3>Social Media Manager — Skewen, Wales</h3>
+            <p>Planned and executed content calendars, short-form video, and paid social tests. Grew engagement with analytics-driven iteration and cross-posting workflows. Coordinated graphics, copy, and publishing automation.</p>
+          </div>
+        </article>
+
+        <article class="timeline">
+          <div class="time"><span>2019–Present</span></div>
+          <div class="item">
+            <h3>Graphic Designer & Developer — Select Signs Ltd</h3>
+            <p>Signage design for print/CNC using Illustrator, Photoshop, and CAD. Produced proofs, prepared cut files, and supported brand systems and workflow modernization.</p>
+          </div>
+        </article>
+
+        <article class="timeline">
+          <div class="time"><span>2019–Present</span></div>
+          <div class="item">
+            <h3>Creative Director / Performer — Sex Pistols Exposé / NVS</h3>
+            <p>Lead singer/guitarist and content producer. Managed multi-platform presence, achieving 18K+ followers and 200K+ video views. Delivered video, merch, and social assets end-to-end.</p>
+          </div>
         </article>
       </section>
 
-      <section class="section summary reveal">
-        <h2>Summary Statement <span>●</span></h2>
-        <p>Independent builder and performer with proven real-world capability across software, real-world design, and creative media. Delivers working production systems, AI pipelines, and live client projects without formal degree training — demonstrating hands-on skill, discipline, and professional execution from concept to deployment.</p>
+      <!-- Education -->
+      <section class="card">
+        <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+
+        <article class="edu">
+          <h3>Neath College (2017–2020)</h3>
+          <p>BTEC ICT Level 3 Diploma · BTEC Music Level 2 Diploma · Welsh Baccalaureate</p>
+        </article>
+
+        <article class="edu">
+          <h3>Ysgol Bae Baglan (2016–2017)</h3>
+          <p>GCSEs: English, Mathematics, Science, History, Religious Education, Welsh Baccalaureate</p>
+        </article>
+      </section>
+
+      <!-- Summary -->
+      <section class="card">
+        <h2><i class="fa-solid fa-lightbulb"></i> Summary Statement</h2>
+        <p>
+          Independent full-stack developer and creative technologist with hands-on experience across AI, automation, and web infrastructure. 
+          Specialises in building real-world systems that connect <strong>OpenAI</strong> models, <strong>Stripe</strong> payments, and <strong>GoDaddy / Netlify / GitHub</strong> APIs to deliver fully-deployed, production-ready websites. 
+          Combines strong backend logic in <strong>Node.js / Express</strong> with front-end precision in <strong>React, Next.js, and modular JavaScript</strong>.
+        </p>
+        <p>
+          Experienced in <strong>AI content generation, LoRA training, and media automation</strong>, producing realistic visuals and video content through <strong>Stable Diffusion, ComfyUI, and AnimateDiff</strong>. 
+          Comfortable leading full development cycles — planning, architecture, deployment, and post-launch optimisation — while maintaining brand consistency and UX quality.
+        </p>
+        <p>
+          Excels in fast-paced, high-output environments where technical depth and creative direction overlap. 
+          Offers proven delivery across commercial clients, live performance projects, and AI research initiatives. 
+          Ideal for AI, backend, and full-stack developer roles requiring autonomy, efficiency, and scalable problem-solving.
+        </p>
       </section>
     </section>
   </main>
 
-  <!-- Footer — UPGRADED, MODERN, CLEAN -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo-footer">WG</div>
-        <div class="footer-brand-text">
-          <p>Website Generation Ltd</p>
-          <p class="tagline">AI-powered web & media solutions</p>
-        </div>
-      </div>
-      <nav class="footer-links">
-        <a href="https://websitegeneration.co.uk" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Portfolio</a>
-        <a href="https://github.com/joeyenvy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
-        <a href="mailto:joe@websitegeneration.co.uk"><i class="fas fa-envelope"></i> Contact</a>
-      </nav>
-      <div class="footer-social">
-        <a href="https://instagram.com/pretty.envious" target="_blank" rel="noopener" aria-label="Instagram @pretty.envious"><i class="fab fa-instagram"></i></a>
-        <a href="https://instagram.com/nvs_officialuk" target="_blank" rel="noopener" aria-label="Instagram @nvs_officialuk"><i class="fas fa-microphone"></i></a>
-        <a href="https://www.youtube.com/channel/UCAjcm0xvvQEwxGbJFJ2Q_tA" target="_blank" rel="noopener" aria-label="YouTube NVS Channel"><i class="fab fa-youtube"></i></a>
-      </div>
-      <p class="footer-copy">© 2025 Joe Mort – All Rights Reserved</p>
-    </div>
+  <!-- Footer -->
+  <footer class="card" style="text-align:center; margin-top:2rem;">
+    <p><strong>© 2025 Joe Mort | Website Generation Ltd</strong></p>
+    <p>
+      <a href="https://websitegeneration.co.uk" target="_blank" rel="noopener">websitegeneration.co.uk</a> ·
+      <a href="https://github.com/JoeyEnvy/WebsiteGeneration" target="_blank" rel="noopener">GitHub Repo</a>
+    </p>
   </footer>
 
-  <!-- Toast -->
-  <div id="toast" class="toast" role="status" aria-live="polite">Link copied!</div>
+  <!-- Scroll progress bar -->
+  <div id="scrollbar"></div>
+  <script>
+    const bar = document.getElementById("scrollbar");
+    window.addEventListener("scroll", () => {
+      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      bar.style.width = scrolled + "%";
+    });
+  </script>
 
-
-
-
-<script>
-
-  // === PAGE TRANSITION LOGIC ===
-  document.querySelectorAll('a[href$=".html"]').forEach(link => {
-    if (link.hostname === location.hostname) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-
-        // Create transition overlay
-        const overlay = document.createElement('div');
-        overlay.className = 'page-transition';
-        document.body.appendChild(overlay);
-
-        // Trigger entrance
-        requestAnimationFrame(() => overlay.classList.add('active'));
-
-        // Navigate after animation
-        setTimeout(() => {
-          window.location = href;
-        }, 600);
-      });
-    }
-  });
-
-
-
-</script>
 </body>
 </html>
