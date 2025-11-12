@@ -9,25 +9,36 @@
   <meta name="author" content="Website Generation Ltd">
   <meta name="keywords" content="vinyl signage, shopfronts, vehicle decals, large-format printing, custom signage, UK">
   <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Vinyl & Signage — Website Generation Ltd">
   <meta property="og:description" content="Custom vinyl cutouts, vehicle wraps, large-format printing, and more.">
-  <meta property="og:image" content="images/14.png">
+  <meta property="og:image" content="https://websitegeneration.co.uk/images/14.png">
   <meta property="og:url" content="https://websitegeneration.co.uk/vinyl.html">
   <meta property="og:type" content="website">
+
   <link rel="canonical" href="https://websitegeneration.co.uk/vinyl.html">
   <link rel="icon" type="image/png" sizes="32x32" href="images/14.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/14.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
 
-  <!-- LIGHTBOX CSS (MINIMAL, NO BLOAT) -->
+  <!-- Preconnect & Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="images/7.png" as="image" fetchpriority="high">
+  <link rel="preload" href="vinyl.css" as="style">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="vinyl.css">
+
+  <!-- LIGHTBOX CSS -->
   <style>
     .lightbox {
       display: none;
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
+      inset: 0;
       background: rgba(10,11,30,.96);
       backdrop-filter: blur(12px);
       z-index: 9999;
@@ -37,10 +48,7 @@
       opacity: 0;
       transition: opacity .3s ease;
     }
-    .lightbox.active {
-      display: flex;
-      opacity: 1;
-    }
+    .lightbox.active { display: flex; opacity: 1; }
     .lightbox img {
       max-width: 90%;
       max-height: 90vh;
@@ -63,7 +71,7 @@
       transition: all .2s ease;
     }
     .lightbox-close:hover {
-      background: var(--brand-accent);
+      background: var(--accent);
       color: #000;
     }
     @keyframes zoomIn {
@@ -75,13 +83,10 @@
       .lightbox-close { top: 16px; right: 16px; width: 40px; height: 40px; font-size: 20px; }
     }
   </style>
-
-  <!-- FAVICON AND SEO META DATA FOR MOBILE AND TABLETS -->
-  <link rel="icon" href="images/14.png" sizes="32x32" type="image/png">
 </head>
 <body>
   <!-- BACKGROUND BLOBS -->
-  <div class="bg-gradients">
+  <div class="bg-gradients" aria-hidden="true">
     <div class="blob b1"></div>
     <div class="blob b2"></div>
     <div class="blob b3"></div>
@@ -89,14 +94,14 @@
 
   <!-- HEADER -->
   <header class="site-header" id="header">
-    <div class="header-inner">
+    <div class="container header-inner">
       <a href="index.html" class="brand">
-        <img src="images/7.png" alt="Website Generation Logo" class="brand-mark" width="64" height="64">
+        <img src="images/7.png" alt="Website Generation Logo" class="brand-mark" width="64" height="64" loading="eager" decoding="async" fetchpriority="high">
         <span>Website Generation<span class="suffix">.co.uk</span></span>
       </a>
       <nav class="nav" id="nav">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="vinyl.html" class="nav-link">Vinyl & Signage</a>
+        <a href="vinyl.html" class="nav-link active">Vinyl & Signage</a>
         <a href="index.html#projects" class="nav-link">Projects</a>
         <a href="videos.html" class="nav-link">Videos</a>
         <a href="index.html#contact" class="nav-link btn btn-outline">Contact</a>
@@ -120,43 +125,39 @@
     </div>
   </section>
 
-  <!-- VINYL GRID WITH LIGHTBOX -->
+  <!-- VINYL GRID -->
   <section id="vinyl" class="section section-alt">
     <div class="container">
       <h2 class="section-title reveal-up">Our Signage Work</h2>
-      <p class="section-subtitle reveal-up delay-1">Custom vinyl cutouts, logos, vehicle wraps, and large-format prints for businesses and events across the UK.</p>
+      <p class="section-subtitle reveal-up delay-1">Vinyl cutouts, vehicle wraps, and acrylic lettering for clients nationwide.</p>
 
       <div class="vinyl-grid reveal-up delay-2">
-        <!-- 1. Shopfront Panel -->
-        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/77.png" data-alt="Custom shopfront vinyl signage with metallic finish">
-          <img src="images/77.png" alt="Shopfront vinyl signage" loading="lazy">
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/77.png" data-alt="Shopfront vinyl signage">
+          <img src="images/77.png" alt="Shopfront vinyl signage" loading="lazy" decoding="async">
           <div class="vinyl-caption">
             <h4>Shopfront Panels</h4>
             <p>Premium fascia panels with vinyl lettering and optional illumination.</p>
           </div>
         </a>
 
-        <!-- 2. Vehicle Wrap -->
-        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/78.png" data-alt="Full vehicle wrap with custom branding">
-          <img src="images/78.png" alt="Vehicle wrap" loading="lazy">
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/78.png" data-alt="Vehicle wrap branding">
+          <img src="images/78.png" alt="Vehicle wrap" loading="lazy" decoding="async">
           <div class="vinyl-caption">
             <h4>Vehicle Branding</h4>
             <p>Full and partial wraps using durable, weatherproof vinyl.</p>
           </div>
         </a>
 
-        <!-- 3. Indoor Graphics -->
-        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/67.webp" data-alt="Indoor wall vinyl graphics for office branding">
-          <img src="images/67.webp" alt="Indoor wall graphics" loading="lazy">
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/67.webp" data-alt="Indoor wall vinyl">
+          <img src="images/67.webp" alt="Indoor wall graphics" loading="lazy" decoding="async">
           <div class="vinyl-caption">
             <h4>Indoor Signage</h4>
             <p>High-res wall graphics, frosted vinyl, and acrylic displays.</p>
           </div>
         </a>
 
-        <!-- 4. 3D Letters -->
-        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/65.jpg" data-alt="3D acrylic lettering with standoff mounts">
-          <img src="images/65.jpg" alt="3D acrylic letters" loading="lazy">
+        <a href="#" class="vinyl-item lightbox-trigger" data-img="images/65.jpg" data-alt="3D acrylic lettering">
+          <img src="images/65.jpg" alt="3D acrylic letters" loading="lazy" decoding="async">
           <div class="vinyl-caption">
             <h4>3D & Acrylic Lettering</h4>
             <p>Laser-cut letters with stand-off mounts for premium depth.</p>
@@ -170,11 +171,11 @@
     </div>
   </section>
 
-  <!-- CONTACT CTA -->
+  <!-- CTA -->
   <section class="section">
     <div class="container text-center">
       <h2 class="reveal-up">Need Professional Signage?</h2>
-      <p class="lead reveal-up delay-1">We handle everything — design, production, and nationwide installation.</p>
+      <p class="lead reveal-up delay-1">We handle everything — design, print, and installation.</p>
       <div class="cta-group reveal-up delay-2">
         <a href="index.html#contact" class="btn">Contact Us</a>
       </div>
@@ -183,8 +184,8 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
+    <div class="container footer-grid">
+      <div class="footer-col">
         <h4>Website Generation Ltd</h4>
         <p class="muted">AI Web • Design • Media | UK Registered SC868009</p>
       </div>
@@ -199,18 +200,18 @@
       <div class="footer-col">
         <h5>Connect</h5>
         <ul>
-          <li><a href="https://www.youtube.com/@Devious_AI" target="_blank">YouTube – Devious AI</a></li>
           <li><a href="mailto:joe@websitegeneration.co.uk">Email Us</a></li>
+          <li><a href="https://www.youtube.com/@Devious_AI" target="_blank">YouTube – Devious AI</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="container footer-bottom">
       <p>© <span id="year"></span> Website Generation Ltd. All rights reserved.</p>
       <p><a href="#top">Back to top</a></p>
     </div>
   </footer>
 
-  <!-- LIGHTBOX MODAL -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-close" id="lightbox-close">X</div>
     <img id="lightbox-img" src="" alt="">
@@ -222,22 +223,22 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // HEADER & SCROLLBAR
-    (function(){
+    (() => {
       const header = document.getElementById('header');
       const bar = document.getElementById('scrollbar');
-      function onScroll(){
+      const onScroll = () => {
         header.classList.toggle('shrink', window.scrollY > 60);
         if(bar){
           const max = document.body.scrollHeight - window.innerHeight;
           bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
         }
-      }
-      window.addEventListener('scroll', onScroll, {passive: true});
+      };
+      window.addEventListener('scroll', onScroll, {passive:true});
       onScroll();
     })();
 
-    // MOBILE MENU
-    (function(){
+    // BURGER MENU
+    (() => {
       const burger = document.getElementById('burger');
       const nav = document.getElementById('nav');
       burger.addEventListener('click', () => {
@@ -261,10 +262,8 @@
     document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
       trigger.addEventListener('click', e => {
         e.preventDefault();
-        const img = trigger.dataset.img;
-        const alt = trigger.dataset.alt;
-        lightboxImg.src = img;
-        lightboxImg.alt = alt;
+        lightboxImg.src = trigger.dataset.img;
+        lightboxImg.alt = trigger.dataset.alt;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
@@ -282,7 +281,6 @@
       }
     });
 
-    // ESC KEY CLOSE
     document.addEventListener('keydown', e => {
       if(e.key === 'Escape' && lightbox.classList.contains('active')) {
         lightbox.classList.remove('active');
@@ -293,9 +291,9 @@
     // PAGE TRANSITION
     document.querySelectorAll('a[href$=".html"]').forEach(link => {
       if (link.hostname === location.hostname) {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', e => {
           e.preventDefault();
-          const href = this.getAttribute('href');
+          const href = link.getAttribute('href');
           const overlay = document.createElement('div');
           overlay.className = 'page-transition';
           document.body.appendChild(overlay);
@@ -306,7 +304,28 @@
     });
   </script>
 
-<script src="script.js" defer></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.getElementById("burger");
+  const nav = document.getElementById("nav");
+  if (!burger || !nav) return;
 
+  burger.addEventListener("click", () => {
+    const expanded = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", !expanded);
+    nav.classList.toggle("open");
+  });
+
+  nav.addEventListener("click", e => {
+    if (e.target.closest("a")) {
+      burger.setAttribute("aria-expanded", "false");
+      nav.classList.remove("open");
+    }
+  });
+});
+</script>
+
+
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <!-- =========================================================
        WEBSITE GENERATION LTD — VIDEOS PAGE
-       Devious AI Videos • Lazy-loaded embeds • Full theme match
+       Full Theme Match • Responsive • Lazy YouTube Embeds
   ============================================================ -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,49 +11,75 @@
   <meta name="description" content="AI-generated motion, storyboards, and post-production by Website Generation Ltd.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Website Generation Ltd">
-  <meta name="keywords" content="AI-generated videos, animation, storyboards, post-production, digital media, motion graphics, Devious AI">
+  <meta name="keywords" content="AI videos, animation, storyboards, post-production, motion graphics, Devious AI, Website Generation">
   <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Devious AI Videos — Website Generation Ltd">
   <meta property="og:description" content="AI-powered videos, animation, and post-production projects from Website Generation Ltd.">
-  <meta property="og:image" content="images/14.png">
+  <meta property="og:image" content="https://websitegeneration.co.uk/images/14.png">
   <meta property="og:url" content="https://websitegeneration.co.uk/videos.html">
   <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Devious AI Videos — Website Generation Ltd">
+  <meta name="twitter:description" content="AI-powered videos, animation, and post-production projects from Website Generation Ltd.">
+  <meta name="twitter:image" content="https://websitegeneration.co.uk/images/14.png">
+
   <link rel="canonical" href="https://websitegeneration.co.uk/videos.html">
   <link rel="icon" type="image/png" sizes="32x32" href="images/14.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/14.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Preloads -->
+  <link rel="preload" href="videos.css" as="style">
+  <link rel="preload" href="images/7.png" as="image" fetchpriority="high">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="videos.css">
 </head>
 
 <body>
+  <!-- BACKGROUND BLOBS -->
+  <div class="bg-gradients" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
   <!-- HEADER -->
   <header class="site-header" id="header">
-    <div class="header-inner">
+    <div class="container header-inner">
       <a href="index.html" class="brand">
-        <img src="images/7.png" alt="Website Generation Logo" class="brand-mark" width="64" height="64">
+        <img src="images/7.png" alt="Website Generation Logo" class="brand-mark" width="64" height="64" loading="eager" decoding="async" fetchpriority="high">
         <span>Website Generation<span class="suffix">.co.uk</span></span>
       </a>
       <nav class="nav" id="nav">
         <a href="index.html" class="nav-link">Home</a>
         <a href="vinyl.html" class="nav-link">Vinyl & Signage</a>
         <a href="index.html#projects" class="nav-link">Projects</a>
-        <a href="videos.html" class="nav-link">Videos</a>
+        <a href="videos.html" class="nav-link active">Videos</a>
         <a href="index.html#contact" class="nav-link btn btn-outline">Contact</a>
       </nav>
       <button class="burger" id="burger" aria-label="Toggle Menu" aria-controls="nav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div class="scrollbar" id="scrollbar"></div>
+    <div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
   </header>
 
   <!-- HERO -->
   <section class="hero" style="padding-top:140px">
     <div class="container text-center">
       <h1 class="reveal-up">Devious AI Videos</h1>
-      <p class="lead reveal-up delay-1">Realistic AI-generated motion, storyboards, and post-production projects from Website Generation Ltd.</p>
+      <p class="lead reveal-up delay-1">AI-generated motion, film sequences, and creative post-production.</p>
       <div class="cta-group reveal-up delay-2">
         <a href="#videos" class="btn">Watch Highlights</a>
         <a href="https://www.youtube.com/@Devious_AI" target="_blank" class="btn btn-outline">YouTube Channel</a>
@@ -61,24 +87,23 @@
     </div>
   </section>
 
-  <!-- VIDEOS -->
+  <!-- VIDEOS SECTION -->
   <section id="videos" class="section section-alt">
     <div class="container">
       <h2 class="section-title reveal-up">Featured Videos</h2>
-      <p class="section-subtitle reveal-up delay-1">AI-driven film sequences, promotional edits, and experimental concepts.</p>
+      <p class="section-subtitle reveal-up delay-1">AI-driven film sequences, promotional edits, and experimental motion design.</p>
 
       <div class="video-embed-grid reveal-up delay-2">
-        <!-- Video 1 -->
         <div class="video-thumb" data-src="https://www.youtube.com/embed/DBp7-Y1cbnE">
-          <img src="https://i.ytimg.com/an_webp/DBp7-Y1cbnE/mqdefault_6s.webp?du=3000&sqp=CN_SuMgG&rs=AOn4CLAQtigZz7J7s7WTx-u5j7kxvoxSJQ" alt="AI Video 1" loading="lazy">
+          <img src="https://i.ytimg.com/vi/DBp7-Y1cbnE/hqdefault.jpg" alt="AI Video 1" loading="lazy" decoding="async">
         </div>
-        <!-- Video 2 -->
+
         <div class="video-thumb" data-src="https://www.youtube.com/embed/JyDyclZfCgQ">
-          <img src="https://i.ytimg.com/an_webp/JyDyclZfCgQ/mqdefault_6s.webp?du=3000&sqp=CPTGuMgG&rs=AOn4CLC5KdrsFdkSWYV7Hywuxshdb6Uqng" alt="AI Video 2" loading="lazy">
+          <img src="https://i.ytimg.com/vi/JyDyclZfCgQ/hqdefault.jpg" alt="AI Video 2" loading="lazy" decoding="async">
         </div>
-        <!-- Video 3 -->
+
         <div class="video-thumb" data-src="https://www.youtube.com/embed/yARHRAJY5ZQ">
-          <img src="https://i.ytimg.com/an_webp/yARHRAJY5ZQ/mqdefault_6s.webp?du=3000&sqp=CPjVuMgG&rs=AOn4CLBVTpc98haC4VQDfK61h_Bf0iQwxg" alt="AI Video 3" loading="lazy">
+          <img src="https://i.ytimg.com/vi/yARHRAJY5ZQ/hqdefault.jpg" alt="AI Video 3" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -88,7 +113,7 @@
     </div>
   </section>
 
-  <!-- CONTACT CTA -->
+  <!-- CTA -->
   <section class="section">
     <div class="container text-center">
       <h2 class="reveal-up">Need AI Video or Animation Work?</h2>
@@ -101,10 +126,10 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
+    <div class="container footer-grid">
+      <div class="footer-col">
         <h4>Website Generation Ltd</h4>
-        <p class="muted">AI Web • Design • Media | UK Registered SC868009</p>
+        <p>AI Web • Design • Media | UK Registered SC868009</p>
       </div>
       <div class="footer-col">
         <h5>Explore</h5>
@@ -117,90 +142,80 @@
       <div class="footer-col">
         <h5>Connect</h5>
         <ul>
-          <li><a href="https://www.youtube.com/@Devious_AI" target="_blank">YouTube – Devious AI</a></li>
           <li><a href="mailto:joe@websitegeneration.co.uk">Email Us</a></li>
+          <li><a href="https://www.youtube.com/@Devious_AI" target="_blank">YouTube – Devious AI</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="container footer-bottom">
       <p>© <span id="year"></span> Website Generation Ltd. All rights reserved.</p>
       <p><a href="#top">Back to top</a></p>
     </div>
   </footer>
 
+  <!-- JS -->
   <script>
-    document.documentElement.classList.remove('no-js');
-    document.getElementById('year').textContent = new Date().getFullYear();
+  document.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.classList.remove("no-js");
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    (function() {
-      var header = document.getElementById('header');
-      var bar = document.getElementById('scrollbar');
-      function onScroll() {
-        if (header) header.classList.toggle('shrink', window.scrollY > 60);
-        if (bar) {
-          var max = document.body.scrollHeight - window.innerHeight;
-          bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-        }
+    const header = document.getElementById("header");
+    const bar = document.getElementById("scrollbar");
+    const burger = document.getElementById("burger");
+    const nav = document.getElementById("nav");
+
+    const onScroll = () => {
+      header.classList.toggle("shrink", window.scrollY > 60);
+      if (bar) {
+        const max = document.body.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    })();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
-    (function() {
-      var burger = document.getElementById('burger');
-      var nav = document.getElementById('nav');
-      burger.addEventListener('click', function() {
-        var ex = burger.getAttribute('aria-expanded') === 'true';
-        burger.setAttribute('aria-expanded', !ex);
-        nav.classList.toggle('open');
-      });
-      nav.addEventListener('click', function(e) {
-        if (e.target.closest('a')) {
-          burger.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('open');
-        }
-      });
-    })();
+    // Burger menu
+    burger.addEventListener("click", () => {
+      const expanded = burger.getAttribute("aria-expanded") === "true";
+      burger.setAttribute("aria-expanded", !expanded);
+      nav.classList.toggle("open");
+    });
+    nav.addEventListener("click", e => {
+      if (e.target.closest("a")) {
+        burger.setAttribute("aria-expanded", "false");
+        nav.classList.remove("open");
+      }
+    });
 
-    // Lightweight lazy video loader
-    document.querySelectorAll('.video-thumb').forEach(v => {
-      v.addEventListener('click', () => {
-        if (v.classList.contains('is-playing')) return;
-        const iframe = document.createElement('iframe');
-        iframe.src = v.dataset.src + '?autoplay=1';
-        iframe.allow = 'accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture';
+    // Lazy video load
+    document.querySelectorAll(".video-thumb").forEach(v => {
+      v.addEventListener("click", () => {
+        if (v.classList.contains("is-playing")) return;
+        const iframe = document.createElement("iframe");
+        iframe.src = v.dataset.src + "?autoplay=1";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
+        v.innerHTML = "";
         v.appendChild(iframe);
-        v.classList.add('is-playing');
+        v.classList.add("is-playing");
       });
     });
 
-    // === PAGE TRANSITION LOGIC ===
+    // Page transition
     document.querySelectorAll('a[href$=".html"]').forEach(link => {
       if (link.hostname === location.hostname) {
-        link.addEventListener('click', function(e) {
+        link.addEventListener("click", e => {
           e.preventDefault();
-          const href = this.getAttribute('href');
-
-          // Create transition overlay
-          const overlay = document.createElement('div');
-          overlay.className = 'page-transition';
+          const href = link.getAttribute("href");
+          const overlay = document.createElement("div");
+          overlay.className = "page-transition";
           document.body.appendChild(overlay);
-
-          // Trigger entrance
-          requestAnimationFrame(() => overlay.classList.add('active'));
-
-          // Navigate after animation
-          setTimeout(() => {
-            window.location = href;
-          }, 600);
+          requestAnimationFrame(() => overlay.classList.add("active"));
+          setTimeout(() => window.location = href, 600);
         });
       }
     });
+  });
   </script>
-
-<script src="script.js" defer></script>
-
-
 </body>
 </html>
