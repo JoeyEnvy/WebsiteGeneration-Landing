@@ -1,7 +1,8 @@
 /* =====================================================
-   Joe Mort — Visual CV (Final Polished Edition)
-   Improved Desktop Spacing + Projects & Links Layout
-   + Centered Mobile Header Controls
+   Joe Mort — Visual CV (Refined Final Layout)
+   • Improved Desktop Readability
+   • Link-Grid Alignment + Wrapping Fix
+   • 2-Page PDF Guarantee
 ===================================================== */
 
 :root{
@@ -29,7 +30,7 @@ html,body{
   line-height:1.6;
   scroll-behavior:smooth;
   overflow-x:hidden;
-  padding:var(--s4) var(--s3);
+  padding:40px 60px;
 }
 @keyframes hueShift{
   0%{background-position:0% 50%}
@@ -78,7 +79,7 @@ img{max-width:100%;height:auto;display:block}
 .intro-metrics span{color:var(--muted);font-weight:600;font-size:.9rem}
 
 /* ---------------- Grid ---------------- */
-.grid{display:grid;grid-template-columns:360px 1fr;gap:var(--s3);align-items:start}
+.grid{display:grid;grid-template-columns:360px 1fr;gap:40px;align-items:start}
 
 /* ---------------- Cards ---------------- */
 .card{
@@ -90,41 +91,42 @@ img{max-width:100%;height:auto;display:block}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(10,102,255,.08)}
 .card h2{font-size:1.1rem;color:var(--blue);margin-bottom:var(--s3);display:flex;align-items:center;gap:10px}
 
-/* ---------------- Links Grid (Better Desktop + Mobile Layout) ---------------- */
+/* ---------------- Links Grid ---------------- */
 .link-grid{
   display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
+  grid-template-columns:1fr 1fr;
+  gap:14px 18px;
 }
 .link-grid a{
-  display:flex;justify-content:space-between;align-items:center;
+  display:flex;align-items:center;gap:10px;
+  justify-content:flex-start;
   padding:14px 16px;
   background:var(--soft);
   border:1px solid var(--border);
   border-radius:12px;
   font-weight:600;font-size:.95rem;
+  line-height:1.4;
+  text-wrap:balance;
+  word-break:break-word;
   transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
 }
-.link-grid a span{flex:1;margin:0 8px;color:var(--text)}
-.link-grid a b{font-weight:700;color:var(--muted);font-size:.9rem}
-.link-grid a i:first-child{color:var(--blue)}
+.link-grid a span{color:var(--text);flex:1}
+.link-grid a b{font-weight:700;color:var(--muted);font-size:.9rem;word-break:break-all}
+.link-grid a i:first-child{color:var(--blue);min-width:16px}
 .link-grid a:hover{transform:translateY(-3px);background:#eaf2ff;box-shadow:0 8px 18px rgba(10,102,255,.12)}
 
-@media(min-width:1100px){
-  .link-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:16px 18px;
-  }
+@media(max-width:1024px){
+  .link-grid{grid-template-columns:1fr}
 }
 
 /* ---------------- Projects ---------------- */
 .project{
-  display:grid;grid-template-columns:260px 1fr;gap:24px;
-  padding-bottom:24px;margin-bottom:28px;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:260px 1fr;gap:26px;
+  padding-bottom:24px;margin-bottom:32px;border-bottom:1px solid var(--border);
 }
 .project:last-child{border:0;margin-bottom:0;padding-bottom:0}
 .project img{
-  width:100%;max-width:260px;height:160px;border-radius:12px;object-fit:cover;
+  width:100%;max-width:260px;height:165px;border-radius:12px;object-fit:cover;
   border:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,.08);
   transition:transform .3s ease;
 }
@@ -132,10 +134,10 @@ img{max-width:100%;height:auto;display:block}
 .project h3{color:var(--blue);margin-bottom:6px;font-size:1.05rem}
 .project p{margin-bottom:10px}
 
-/* -------- Devious AI normalized to project layout -------- */
+/* -------- Devious AI (identical layout) -------- */
 .project.devious .devious-wrap{display:contents}
 .project.devious .devious-img{
-  width:100%;max-width:260px;height:160px;border-radius:12px;overflow:hidden;
+  width:100%;max-width:260px;height:165px;border-radius:12px;overflow:hidden;
   border:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 .project.devious .devious-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
@@ -161,42 +163,36 @@ img{max-width:100%;height:auto;display:block}
 
 /* ---------------- Responsive Refinement ---------------- */
 @media(max-width:1280px){
-  body{padding:36px 28px}
+  body{padding:36px 36px}
   .grid{grid-template-columns:320px 1fr}
 }
 @media(max-width:1024px){
-  body{padding:28px 26px}
+  body{padding:30px 30px}
   .grid{grid-template-columns:280px 1fr}
-  .project{grid-template-columns:1fr;gap:18px}
-  .project img{max-width:100%;height:200px}
+  .project{grid-template-columns:1fr;gap:20px}
+  .project img{max-width:100%;height:220px}
 }
-/* --- Added margin safety & centered top header on mobile --- */
 @media(max-width:768px){
-  body{padding-left:26px;padding-right:26px}
+  body{padding:26px 26px}
   .grid{grid-template-columns:1fr}
   .intro{grid-template-columns:1fr;text-align:center}
   .intro-img{margin:0 auto;width:120px;height:120px}
   .overview-grid{grid-template-columns:1fr}
   .pdf-header{
-    position:static;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-bottom:12px;
-    text-align:center;
+    position:static;justify-content:center;flex-wrap:wrap;
+    gap:10px;margin-bottom:12px;text-align:center;
   }
   .link-grid{grid-template-columns:1fr;gap:12px}
 }
 @media(max-width:480px){
-  html,body{font-size:14px;padding-left:22px;padding-right:22px}
+  html,body{font-size:14px;padding:22px}
   .card,.intro{padding:var(--s3)}
   .intro-metrics li{min-width:100px}
-  .project img{height:180px}
-  .pdf-header a{padding:6px 10px;font-size:.8rem}
+  .project img{height:190px}
 }
 @media(max-width:360px){
-  html,body{font-size:13px;padding-left:20px;padding-right:20px}
-  .pdf-header a{padding:6px 8px;font-size:.75rem}
+  html,body{font-size:13px;padding:20px}
+  .pdf-header a{padding:6px 10px;font-size:.75rem}
 }
 
 /* ===== Scroll Progress Bar ===== */
@@ -216,7 +212,7 @@ img{max-width:100%;height:auto;display:block}
   html,body{
     background:#fff!important;color:#000!important;
     -webkit-print-color-adjust:exact;print-color-adjust:exact;
-    font-size:8.4px;line-height:1.22;margin:0;padding:0;
+    font-size:8.5px;line-height:1.23;margin:0;padding:0;
   }
 
   .pdf-header{
@@ -232,11 +228,20 @@ img{max-width:100%;height:auto;display:block}
     white-space:nowrap!important;
   }
 
-  .grid{display:grid!important;grid-template-columns:230px 1fr!important;gap:7px!important;align-items:start!important}
+  .grid{display:grid!important;grid-template-columns:230px 1fr!important;gap:6px!important;align-items:start!important}
   .card,.intro,.overview-box,.timeline,.edu{
     page-break-inside:avoid!important;background:#fff!important;border:1px solid #ccc!important;
     padding:5px 6px!important;margin-bottom:4px!important;border-radius:5px!important;
   }
+
+  h1{font-size:.95rem;margin-bottom:2px}
+  h2{font-size:.88rem;margin-bottom:2px}
+  h3{font-size:.78rem;margin-bottom:2px}
+  p,li,span,a,b{font-size:.68rem;color:#111!important}
+
+  .intro{grid-template-columns:70px 1fr!important;gap:5px!important}
+  .intro-img{width:60px!important;height:60px!important;margin:0 auto 3px auto}
+  .intro-metrics li{padding:2px 4px!important;min-width:58px;background:#f8f8f8!important;border:1px solid #bbb!important;font-size:.64rem!important}
 
   .project{
     display:grid!important;

@@ -1,6 +1,6 @@
 /* ===============================================================
-   WEBSITE GENERATION LTD — VIDEOS PAGE CSS v9.9.6
-   Fix: hero upgrade + right-side overflow guard + refined margins
+   WEBSITE GENERATION LTD — VIDEOS PAGE CSS v9.9.7
+   Base: v9.9.5 (stable spacing) + improved hero visuals
 ================================================================ */
 
 /* ---------- RESET ---------- */
@@ -11,8 +11,7 @@ body{
   background:#0a0b1e;color:#e0f0ff;line-height:1.6;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  padding-top:140px; /* fixed header offset */
-  position:relative;z-index:0;
+  padding-top:140px;position:relative;z-index:0;
 }
 img{max-width:100%;display:block;height:auto}
 a{color:inherit;text-decoration:none;transition:color .2s ease,background .2s ease}
@@ -33,13 +32,7 @@ p{margin-bottom:1rem}
 }
 
 /* ---------- GLOBAL ---------- */
-.container{
-  width:min(1180px,90vw);
-  margin:auto;
-  padding-inline:1rem;
-  position:relative;
-  z-index:3;
-}
+.container{width:min(1180px,92vw);margin:auto;padding-inline:1rem;position:relative;z-index:3}
 .section{padding:100px 0;position:relative;z-index:3}
 .section-alt{background:#0f1022;position:relative;z-index:3}
 .text-center{text-align:center}
@@ -48,11 +41,6 @@ h1{font-size:clamp(2.4rem,6vw,4.2rem)}
 h2{font-size:clamp(2rem,5vw,2.6rem);margin-bottom:.6em}
 h3{font-size:1.25rem}
 ::selection{background:var(--accent);color:#000}
-
-/* prevent edge overflow on smaller screens */
-body, .container, section, footer {
-  overflow-x:hidden;
-}
 
 /* ---------- BACKGROUND BLOBS ---------- */
 .bg-gradients{position:fixed;inset:0;z-index:-1;filter:blur(28px) saturate(120%);pointer-events:none}
@@ -104,8 +92,8 @@ body, .container, section, footer {
 
 /* ---------- BURGER ---------- */
 .burger{
-  display:none;width:46px;height:46px;position:relative;border:0;background:none;
-  cursor:pointer;z-index:20;margin-right:30px;
+  display:none;width:44px;height:44px;position:relative;border:0;background:none;
+  cursor:pointer;z-index:20;margin-right:20px;
 }
 .burger span{position:absolute;left:8px;right:8px;height:2px;background:var(--accent);transition:.3s}
 .burger span:nth-child(1){top:12px}
@@ -123,40 +111,25 @@ body, .container, section, footer {
 
 /* ---------- HERO ---------- */
 .hero{
-  padding:200px 0 120px;text-align:center;
-  position:relative;z-index:3;
-  background:radial-gradient(circle at 50% 20%,#151729 0%,#0a0b1e 100%);
-  overflow:hidden;
+  padding:190px 0 110px;text-align:center;z-index:3;position:relative;
+  background:linear-gradient(-45deg,#0a0b1e,#151729,#0a0b1e,#151729);
+  background-size:400% 400%;animation:gradient 18s ease infinite;
+  box-shadow:inset 0 -60px 60px rgba(0,0,0,.3);
 }
-.hero::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at center,rgba(255,255,255,.05),transparent 70%);
-  mix-blend-mode:overlay;z-index:2;
-}
+@keyframes gradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .hero h1{
-  position:relative;z-index:3;
   background:linear-gradient(90deg,var(--brand),var(--accent));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:16px;
-  text-shadow:0 0 18px rgba(255,255,255,.1);
+  margin-bottom:14px;text-shadow:0 0 22px rgba(255,255,255,.08);
 }
-.hero .lead{
-  color:var(--muted);
-  font-size:1.15rem;
-  max-width:720px;
-  margin:0 auto 2.4rem;
-  opacity:.95;
-}
-.hero .cta-group{
-  display:flex;justify-content:center;gap:18px;flex-wrap:wrap;z-index:3;position:relative;
-}
+.lead{color:var(--muted);font-size:1.1rem;max-width:720px;margin:0 auto 2rem;opacity:.95}
+.cta-group{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
 
 /* ---------- VIDEO GRID ---------- */
 .video-embed-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
   gap:36px;margin-top:48px;
-  position:relative;z-index:3;
 }
 .video-thumb{
   position:relative;overflow:hidden;border-radius:var(--radius);
@@ -206,15 +179,15 @@ body, .container, section, footer {
 .page-transition.active{opacity:1}
 
 /* =======================================================================
-   >>>>>>>>>>>>>>>>>>>>>  RESPONSIVE OVERRIDES  <<<<<<<<<<<<<<<<<<
+   >>>>>>>>>>>>>>>>>>>>>  MOBILE OVERRIDES  <<<<<<<<<<<<<<<<<<
 ======================================================================= */
 
 @media(max-width:1024px){
-  .burger{margin-right:36px!important}
+  .burger{margin-right:26px!important}
 }
 
 @media(max-width:920px){
-  .burger{display:block!important;margin-right:36px!important}
+  .burger{display:block!important;margin-right:26px!important}
   .nav{
     position:fixed!important;top:76px;left:0;right:0;
     background:#0a0b1eef!important;backdrop-filter:blur(14px)!important;
@@ -238,28 +211,27 @@ body, .container, section, footer {
 
 @media(max-width:768px){
   .brand span,.brand .suffix{display:none!important}
-  .header-inner{padding-left:10px!important;padding-right:12px!important}
-  .burger{margin-right:38px!important}
+  .header-inner{padding-left:10px!important;padding-right:8px!important}
+  .burger{margin-right:24px!important}
   .brand-mark{height:78px}
   .site-header.shrink .brand-mark{height:54px}
   .section{padding:80px 0}
-  .hero{padding-top:180px;padding-bottom:100px}
+  .hero{padding-top:160px}
 }
 
 @media(max-width:480px){
+  .header-inner{padding-right:4px!important}
   .burger{
-    width:42px!important;height:42px!important;
-    margin-right:32px!important;margin-top:6px!important;
+    width:38px!important;height:38px!important;
+    margin-right:20px!important;margin-top:6px!important;
   }
   .burger span{left:7px!important;right:7px!important}
   .burger span:nth-child(1){top:10px!important}
   .burger span:nth-child(2){top:18px!important}
   .burger span:nth-child(3){top:26px!important}
-  .hero{padding-top:160px}
+  .brand-mark{height:64px}
+  .site-header.shrink .brand-mark{height:48px}
+  .hero{padding-top:150px}
   .btn{width:100%;justify-content:center}
   .footer-grid{grid-template-columns:1fr}
-}
-
-@media(max-width:360px){
-  .burger{margin-right:34px!important}
 }
