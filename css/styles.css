@@ -205,15 +205,7 @@ h3{font-size:1.25rem}
 .footer-bottom a{color:var(--accent)}
 .footer-bottom a:hover{color:#fff}
 
-/* ---------- CONTACT FAB ---------- */
-.contact-fab{
-  position:fixed;bottom:24px;right:24px;z-index:900;
-  width:62px;height:62px;border-radius:50%;
-  background:linear-gradient(135deg,var(--brand),var(--accent));
-  color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 14px rgba(0,0,0,.3);transition:.25s ease;
-}
-.contact-fab:hover{transform:scale(1.1)}
+
 
 /* ---------- REVEAL ---------- */
 .reveal-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
@@ -305,4 +297,48 @@ h3{font-size:1.25rem}
   .burger span:nth-child(1){top:8px!important}
   .burger span:nth-child(2){top:16px!important}
   .burger span:nth-child(3){top:24px!important}
+}
+
+
+/* ===============================================================
+   AGGRESSIVE NAV SPACE SAVER — YOUR REQUEST
+   1. Hide full logo text below 1500px
+   2. Ultra-tight squeeze below 1280px with !important
+================================================================ */
+@media (max-width: 1500px) {
+  .brand span,
+  .brand .suffix {
+    display: none !important;               /* kills "Website Generation.co.uk" text */
+  }
+  .brand {
+    gap: 0 !important;                       /* removes gap that was there before */
+  }
+  .brand-mark {
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .header-inner {
+    padding-inline: 12px !important;         /* tighter container */
+  }
+  .nav {
+    gap: 8px !important;                     /* ultra-tight gap between links */
+  }
+  .nav-link {
+    padding: 9px 7px !important;             /* tiny horizontal padding */
+    font-size: 0.89rem !important;           /* slightly smaller text */
+    border-radius: 6px !important;
+  }
+}
+
+/* Optional: even tighter below 1100px if you want to push it further */
+@media (max-width: 1100px) {
+  .nav {
+    gap: 6px !important;
+  }
+  .nav-link {
+    padding: 9px 5px !important;
+    font-size: 0.86rem !important;
+  }
 }

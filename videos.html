@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-  <!-- =========================================================
-       WEBSITE GENERATION LTD — VIDEOS PAGE
-       Full Theme Match • Responsive • Lazy YouTube Embeds
-  ============================================================ -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Devious AI Videos — Website Generation Ltd</title>
   <meta name="description" content="AI-generated motion, storyboards, and post-production by Website Generation Ltd.">
   <meta name="robots" content="index, follow">
-  <meta name="author" content="Website Generation Ltd">
-  <meta name="keywords" content="AI videos, animation, storyboards, post-production, motion graphics, Devious AI, Website Generation">
+  <meta name="keywords" content="AI videos, animation, storyboards, post-production, motion graphics, Devious AI">
   <meta name="theme-color" content="#000000">
 
   <!-- Open Graph -->
@@ -20,45 +15,53 @@
   <meta property="og:image" content="https://websitegeneration.co.uk/images/14.png">
   <meta property="og:url" content="https://websitegeneration.co.uk/videos.html">
   <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Devious AI Videos — Website Generation Ltd">
-  <meta name="twitter:description" content="AI-powered videos, animation, and post-production projects from Website Generation Ltd.">
-  <meta name="twitter:image" content="https://websitegeneration.co.uk/images/14.png">
 
   <link rel="canonical" href="https://websitegeneration.co.uk/videos.html">
   <link rel="icon" type="image/png" sizes="32x32" href="images/14.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/14.png">
 
-  <!-- Preconnects -->
+  <!-- Fonts & Preloads -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Preloads -->
   <link rel="preload" href="videos.css" as="style">
   <link rel="preload" href="images/7.png" as="image" fetchpriority="high">
 
-  <!-- CSS -->
+  <!-- CSS — NO styles-float.css ANYMORE -->
   <link rel="stylesheet" href="videos.css">
-</head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- FABs + Header Load Bar Styles — EXACT SAME AS INDEX -->
+  <style>
+    .fab{position:fixed;right:22px;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#ff4da6,#3a86ff);box-shadow:0 8px 24px rgba(0,0,0,.5);color:#fff;font-size:1.6rem;display:flex;align-items:center;justify-content:center;z-index:960;border:none;cursor:pointer;transition:all .35s cubic-bezier(.25,.8,.25,1);backdrop-filter:blur(12px)}
+    .fab.contact-fab{bottom:100px}
+    .fab.top-fab{bottom:28px;opacity:0;pointer-events:none;background:linear-gradient(135deg,#3a86ff,#ff4da6)}
+    .fab.top-fab.show{opacity:1;pointer-events:auto}
+    .fab:hover{transform:translateY(-6px) scale(1.08);box-shadow:0 14px 32px rgba(0,0,0,.6)}
+    #headerProgress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#00ff9d,#3a86ff,#ff4da6);width:0%;z-index:99999;transition:width .15s ease;box-shadow:0 0 10px rgba(255,77,166,.7);pointer-events:none}
+    #headerProgress.done{width:100%;transition:width .4s ease}
+    #headerProgress.hide{opacity:0;transition:opacity .8s .5s}
+    @media(max-width:768px){.fab{width:58px;height:58px;font-size:1.5rem;right:18px}.fab.contact-fab{bottom:92px}.fab.top-fab{bottom:24px}}
+  </style>
+</head>
 <body>
-  <!-- BACKGROUND BLOBS -->
+
+  <!-- HEADER PAGE-LOAD PROGRESS BAR — BACK AND BEAUTIFUL -->
+  <div class="header-progress" id="headerProgress"></div>
+
+  <!-- Background Blobs -->
   <div class="bg-gradients" aria-hidden="true">
     <div class="blob b1"></div>
     <div class="blob b2"></div>
     <div class="blob b3"></div>
   </div>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header class="site-header" id="header">
     <div class="container header-inner">
       <a href="index.html" class="brand">
-        <img src="images/7.png" alt="Website Generation Logo" class="brand-mark" width="64" height="64" loading="eager" decoding="async" fetchpriority="high">
+        <img src="images/7.png" alt="Website Generation Ltd" class="brand-mark" loading="eager" fetchpriority="high">
         <span>Website Generation<span class="suffix">.co.uk</span></span>
       </a>
       <nav class="nav" id="nav">
@@ -75,7 +78,7 @@
     <div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
   </header>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero" style="padding-top:140px">
     <div class="container text-center">
       <h1 class="reveal-up">Devious AI Videos</h1>
@@ -87,26 +90,22 @@
     </div>
   </section>
 
-  <!-- VIDEOS SECTION -->
+  <!-- Videos Grid -->
   <section id="videos" class="section section-alt">
     <div class="container">
       <h2 class="section-title reveal-up">Featured Videos</h2>
       <p class="section-subtitle reveal-up delay-1">AI-driven film sequences, promotional edits, and experimental motion design.</p>
-
       <div class="video-embed-grid reveal-up delay-2">
         <div class="video-thumb" data-src="https://www.youtube.com/embed/DBp7-Y1cbnE">
-          <img src="https://i.ytimg.com/vi/DBp7-Y1cbnE/hqdefault.jpg" alt="AI Video 1" loading="lazy" decoding="async">
+          <img src="https://i.ytimg.com/vi/DBp7-Y1cbnE/hqdefault.jpg" alt="AI Video 1" loading="lazy">
         </div>
-
         <div class="video-thumb" data-src="https://www.youtube.com/embed/JyDyclZfCgQ">
-          <img src="https://i.ytimg.com/vi/JyDyclZfCgQ/hqdefault.jpg" alt="AI Video 2" loading="lazy" decoding="async">
+          <img src="https://i.ytimg.com/vi/JyDyclZfCgQ/hqdefault.jpg" alt="AI Video 2" loading="lazy">
         </div>
-
         <div class="video-thumb" data-src="https://www.youtube.com/embed/yARHRAJY5ZQ">
-          <img src="https://i.ytimg.com/vi/yARHRAJY5ZQ/hqdefault.jpg" alt="AI Video 3" loading="lazy" decoding="async">
+          <img src="https://i.ytimg.com/vi/yARHRAJY5ZQ/hqdefault.jpg" alt="AI Video 3" loading="lazy">
         </div>
       </div>
-
       <div class="cta-center reveal-up delay-3" style="margin-top:32px">
         <a href="https://www.youtube.com/@Devious_AI" target="_blank" class="btn">Visit YouTube</a>
       </div>
@@ -124,28 +123,12 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-grid">
-      <div class="footer-col">
-        <h4>Website Generation Ltd</h4>
-        <p>AI Web • Design • Media | UK Registered SC868009</p>
-      </div>
-      <div class="footer-col">
-        <h5>Explore</h5>
-        <ul>
-          <li><a href="vinyl.html">Vinyl & Signage</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="videos.html">Videos</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul>
-          <li><a href="mailto:joe@websitegeneration.co.uk">Email Us</a></li>
-          <li><a href="https://www.youtube.com/@Devious_AI" target="_blank">YouTube – Devious AI</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h4>Website Generation Ltd</h4><p>AI Web • Design • Media | UK Registered SC868009</p></div>
+      <div class="footer-col"><h5>Explore</h5><ul><li><a href="vinyl.html">Vinyl & Signage</a></li><li><a href="projects.html">Projects</a></li><li><a href="videos.html">Videos</a></li></ul></div>
+      <div class="footer-col"><h5>Connect</h5><ul><li><a href="mailto:joe@websitegeneration.co.uk">Email Us</a></li><li><a href="https://www.youtube.com/@Devious_AI" target="_blank">YouTube – Devious AI</a></li></ul></div>
     </div>
     <div class="container footer-bottom">
       <p>© <span id="year"></span> Website Generation Ltd. All rights reserved.</p>
@@ -153,41 +136,53 @@
     </div>
   </footer>
 
-  <!-- JS -->
+  <!-- Main script (handles scrollbar, burger, reveals, etc.) -->
+  <script src="script.js" defer></script>
+
+  <!-- Page transitions (same as index.html) -->
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.documentElement.classList.remove("no-js");
-    document.getElementById("year").textContent = new Date().getFullYear();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll('a[href$=".html"]').forEach(l => {
+        if (l.hostname !== location.hostname || l.target==="_blank") return;
+        l.addEventListener("click", e => {
+          if (e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+          e.preventDefault();
+          const o=document.createElement("div"); o.className="page-transition";
+          document.body.appendChild(o);
+          requestAnimationFrame(()=>o.classList.add("active"));
+          setTimeout(()=>location.href=l.href,600);
+        });
+      });
+    }
+  </script>
 
-    const header = document.getElementById("header");
-    const bar = document.getElementById("scrollbar");
-    const burger = document.getElementById("burger");
-    const nav = document.getElementById("nav");
+  <!-- Floating Buttons — EXACT SAME AS INDEX -->
+  <div class="fab contact-fab" aria-label="Contact Us" onclick="document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'}) || (location.href='index.html#contact')">
+    <i class="fa-solid fa-envelope"></i>
+  </div>
+  <button id="backToTop" class="fab top-fab" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-    const onScroll = () => {
-      header.classList.toggle("shrink", window.scrollY > 60);
-      if (bar) {
-        const max = document.body.scrollHeight - window.innerHeight;
-        bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+  <!-- Final JS: Back-to-top + Header load bar + Lazy YouTube -->
+  <script>
+    // Back-to-top
+    const topBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => topBtn.classList.toggle("show", scrollY > 600));
+    topBtn.onclick = () => scrollTo({top:0, behavior:"smooth"});
 
-    // Burger menu
-    burger.addEventListener("click", () => {
-      const expanded = burger.getAttribute("aria-expanded") === "true";
-      burger.setAttribute("aria-expanded", !expanded);
-      nav.classList.toggle("open");
+    // Header page-load progress bar
+    const bar = document.getElementById('headerProgress');
+    let w = 0;
+    const go = () => { if (w >= 90) return; w += Math.random()*12+3; bar.style.width = Math.min(w,90)+'%'; requestAnimationFrame(go); };
+    requestAnimationFrame(go);
+    window.addEventListener('load', () => {
+      bar.classList.add('done');
+      setTimeout(() => bar.classList.add('hide'), 600);
+      setTimeout(() => bar.remove(), 2000);
     });
-    nav.addEventListener("click", e => {
-      if (e.target.closest("a")) {
-        burger.setAttribute("aria-expanded", "false");
-        nav.classList.remove("open");
-      }
-    });
 
-    // Lazy video load
+    // Lazy YouTube embeds
     document.querySelectorAll(".video-thumb").forEach(v => {
       v.addEventListener("click", () => {
         if (v.classList.contains("is-playing")) return;
@@ -195,27 +190,12 @@
         iframe.src = v.dataset.src + "?autoplay=1";
         iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
+        iframe.loading = "lazy";
         v.innerHTML = "";
         v.appendChild(iframe);
         v.classList.add("is-playing");
       });
     });
-
-    // Page transition
-    document.querySelectorAll('a[href$=".html"]').forEach(link => {
-      if (link.hostname === location.hostname) {
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          const href = link.getAttribute("href");
-          const overlay = document.createElement("div");
-          overlay.className = "page-transition";
-          document.body.appendChild(overlay);
-          requestAnimationFrame(() => overlay.classList.add("active"));
-          setTimeout(() => window.location = href, 600);
-        });
-      }
-    });
-  });
   </script>
 </body>
 </html>
