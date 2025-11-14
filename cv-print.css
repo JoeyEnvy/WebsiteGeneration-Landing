@@ -1,0 +1,409 @@
+/* ===============================================================
+   PRINT — ABSOLUTE 2-PAGE A4 COMPRESSION MODE
+   - Zero wasted space
+   - Micro font sizing
+   - Forced single-column flow
+   - Tiny images & icons
+   - All cards ultra-compressed
+================================================================ */
+
+@page {
+  size: A4;
+  margin: 4mm;
+}
+
+@media print {
+
+  /* ---------- GLOBAL RESET ---------- */
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: Inter, system-ui, sans-serif !important;
+    font-size: 6pt !important;
+    line-height: 1.05 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background-image: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #scrollbar,
+  .top-controls {
+    display: none !important;
+  }
+
+  /* ---------- PDF BANNER ---------- */
+  .pdf-banner {
+    display: block !important;
+    text-align: center !important;
+    font-size: 6pt !important;
+    font-weight: 700 !important;
+    background: #0a66ff !important;
+    color: #fff !important;
+    padding: 3pt !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .pdf-banner a {
+    color: #fff !important;
+    text-decoration: underline !important;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  body, main, .grid, section, aside {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  section, .card, footer {
+    border: 0.25pt solid #ccc !important;
+    padding: 3pt !important;
+    margin-bottom: 3pt !important;
+    page-break-inside: avoid !important;
+  }
+
+  footer {
+    text-align: center !important;
+    font-size: 5.5pt !important;
+  }
+
+  /* ---------- INTRO ---------- */
+  .intro {
+    display: grid !important;
+    grid-template-columns: 32px 1fr !important;
+    gap: 3pt !important;
+  }
+
+  .intro-img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 2px !important;
+    border: 0.25pt solid #ccc !important;
+    object-fit: cover !important;
+  }
+
+  .intro h1 {
+    font-size: 8pt !important;
+    font-weight: 800 !important;
+    margin-bottom: 1pt !important;
+  }
+
+  .role {
+    font-size: 6pt !important;
+    line-height: 1.05 !important;
+  }
+
+  .role i {
+    font-size: 5.5pt !important;
+    margin-right: 1pt !important;
+  }
+
+  .contact-list li {
+    font-size: 5.8pt !important;
+    display: flex !important;
+    gap: 2pt !important;
+  }
+
+  .contact-list i {
+    font-size: 5.5pt !important;
+  }
+
+  .summary {
+    font-size: 5.9pt !important;
+    line-height: 1.05 !important;
+    margin-top: 2pt !important;
+  }
+
+  .intro-metrics {
+    display: flex !important;
+    gap: 2pt !important;
+    flex-wrap: wrap !important;
+  }
+
+  .intro-metrics li {
+    border: 0.25pt solid #ccc !important;
+    padding: 2pt 3pt !important;
+    border-radius: 2px !important;
+    min-width: 36px !important;
+    text-align: center !important;
+  }
+
+  .intro-metrics i {
+    font-size: 6pt !important;
+  }
+
+  .intro-metrics strong {
+    font-size: 6pt !important;
+  }
+
+  .intro-metrics span {
+    font-size: 5pt !important;
+  }
+
+  /* ---------- HEADINGS ---------- */
+
+  h2 {
+    font-size: 7pt !important;
+    margin-bottom: 1pt !important;
+    font-weight: 700 !important;
+  }
+
+  h3 {
+    font-size: 6.3pt !important;
+    margin-bottom: 1pt !important;
+  }
+
+  .card h2 i {
+    font-size: 5.5pt !important;
+    margin-right: 1pt !important;
+  }
+
+  /* ---------- PARAGRAPHS ---------- */
+
+  p, li, a, span {
+    font-size: 5.8pt !important;
+    line-height: 1.05 !important;
+  }
+
+  /* ---------- OVERVIEW BOXES ---------- */
+  .overview-grid {
+    display: block !important;
+  }
+
+  .overview-box {
+    border: 0.25pt solid #ccc !important;
+    padding: 2pt !important;
+    margin-bottom: 2pt !important;
+  }
+
+  .overview-box p {
+    font-size: 5.6pt !important;
+  }
+
+  /* ---------- BULLETS ---------- */
+  .bullets {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .bullets li {
+    margin-bottom: 1pt !important;
+  }
+
+  .bullets li::before {
+    display: none !important;
+  }
+
+  /* ===============================================================
+      PROJECTS & LINKS — ULTRA MINI MODE
+     =============================================================== */
+
+  .link-grid {
+    display: block !important;
+  }
+
+  .link-grid a {
+    display: grid !important;
+    grid-template-columns: 8pt 1fr 8pt !important;
+    align-items: center !important;
+    padding: 2pt !important;
+    border: 0.25pt solid #ccc !important;
+    margin-bottom: 1pt !important;
+    gap: 2pt !important;
+  }
+
+  .link-grid a i {
+    font-size: 5.5pt !important;
+    text-align: center !important;
+  }
+
+  .link-grid strong {
+    font-size: 5.8pt !important;
+  }
+
+  .link-grid span {
+    font-size: 5pt !important;
+    opacity: 0.85 !important;
+  }
+
+  /* ---------- PROJECT LIST ---------- */
+
+  .project {
+    display: grid !important;
+    grid-template-columns: 28px 1fr !important;
+    gap: 2pt !important;
+    padding-bottom: 2pt !important;
+    border-bottom: 0.25pt solid #cccccc !important;
+    margin-bottom: 2pt !important;
+  }
+
+  /* ALL PROJECT IMAGES: 28×28 (INCLUDING DEVIOUS) */
+  .project img,
+  .project.devious .devious-img {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 2px !important;
+    object-fit: cover !important;
+    border: 0.25pt solid #ccc !important;
+  }
+
+  .project h3 {
+    font-size: 6.1pt !important;
+  }
+
+  .project p {
+    font-size: 5.6pt !important;
+  }
+
+  .links-inline a {
+    font-size: 5.5pt !important;
+  }
+
+  /* ---------- TIMELINE ---------- */
+
+  .timeline {
+    display: grid !important;
+    grid-template-columns: 24px 1fr !important;
+    gap: 2pt !important;
+    border-bottom: 0.25pt dashed #ccc !important;
+    padding: 1.5pt 0 !important;
+  }
+
+  .timeline:last-child {
+    border-bottom: none !important;
+  }
+
+  .timeline .time span {
+    font-size: 5pt !important;
+  }
+
+  /* ---------- EDUCATION ---------- */
+
+  .edu h3 {
+    font-size: 6.2pt !important;
+  }
+
+  .edu p {
+    font-size: 5.6pt !important;
+  }
+
+  /* ---------- CHIPS ---------- */
+
+  .chips {
+    display: flex !important;
+    gap: 2pt !important;
+    flex-wrap: wrap !important;
+  }
+
+  .chips span {
+    border: 0.25pt solid #ccc !important;
+    padding: 2pt 3pt !important;
+    font-size: 5.4pt !important;
+    border-radius: 2px !important;
+  }
+
+  /* ---------- MISC ---------- */
+
+  ul {
+    padding: 0 !important;
+    margin: 0 0 2pt 0 !important;
+  }
+
+  p {
+    margin-bottom: 2pt !important;
+  }
+
+}
+/* ===============================================================
+   PROJECTS & LINKS — MAXIMUM SHRINK OVERRIDE
+================================================================ */
+
+@media print {
+
+  .card h2 i {
+    font-size: 5pt !important;
+  }
+
+  .link-grid {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .link-grid a {
+    display: grid !important;
+    grid-template-columns: 6pt 1fr 6pt !important;
+    padding: 1.5pt 2pt !important;
+    margin-bottom: 1pt !important;
+    border: 0.2pt solid #bbb !important;
+    gap: 1pt !important;
+    line-height: 1 !important;
+  }
+
+  .link-grid a i:first-child,
+  .link-grid a i:last-child {
+    font-size: 4.5pt !important;
+    width: 6pt !important;
+    height: 6pt !important;
+    text-align: center !important;
+  }
+
+  .link-grid strong {
+    font-size: 5pt !important;
+    font-weight: 700 !important;
+    display: block !important;
+    line-height: 1 !important;
+  }
+
+  .link-grid span {
+    font-size: 4.2pt !important;
+    opacity: .8 !important;
+    display: block !important;
+    line-height: 1 !important;
+  }
+
+}
+/* ===============================================================
+   DEVIOUS AI IMAGE — HARD FORCE SHRINK
+================================================================ */
+@media print {
+
+  .project.devious img,
+  .project.devious .devious-img,
+  .project.devious .devious-content img {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+
+    border: 0.2pt solid #ccc !important;
+    border-radius: 2px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* force grid to not blow spacing */
+  .project.devious {
+    grid-template-columns: 26px 1fr !important;
+    gap: 1.5pt !important;
+    padding-bottom: 2pt !important;
+    margin-bottom: 2pt !important;
+  }
+
+}
